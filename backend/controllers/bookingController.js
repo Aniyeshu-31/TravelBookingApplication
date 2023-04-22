@@ -5,6 +5,7 @@ export const createbooking = async(req,res,next)=>{
         const savedBooking = await newBooking.save();
         res.status(200).json({success:true,message:'Booking Saved Successfully!!',data:savedBooking});
     } catch (err) {
+        console.log(err);
         res.status(500).json({
             success:false,
             message:'Booking not saved successfully!!'
