@@ -5,11 +5,20 @@
 }
 
 .logo img {
-    width: 30%;
+    width: 23%;
+    margin-left: -120px;
+    margin-top:-8px;
 }
-
+.header{
+    border-bottom: 1px solid black;
+    border-radius: 40px ;
+}
 .menu {
     margin-bottom: 0;
+}
+
+.login{
+    margin-left: 25px;
 }
 
 .nav__item a{

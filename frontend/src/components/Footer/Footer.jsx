@@ -103,7 +103,7 @@ const Footer = () => {
 
             <ListGroup className="footer__quick-links">
               <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-3">
-                <h6 className="mb-0 d-flex align-items-center gap-2">
+                <h6 className="mb-0 d-flex align-items-center gap-2" id="h6">
                   <span>
                     <i class="ri-map-pin-line"></i>
                   </span>
@@ -113,7 +113,7 @@ const Footer = () => {
                 <p className="mb-0"> Gujarat, India</p>
               </ListGroupItem>
               <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-3">
-                <h6 className="mb-0 d-flex align-items-center gap-2">
+                <h6 className="mb-0 d-flex align-items-center gap-2" id="h61">
                   <span>
                     <i class="ri-mail-line"></i>
                   </span>
@@ -123,7 +123,7 @@ const Footer = () => {
                 <p className="mb-0"> adityadns03@gmail.com</p>
               </ListGroupItem>
               <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-3">
-                <h6 className="mb-0 d-flex align-items-center gap-2">
+                <h6 className="mb-0 d-flex align-items-center gap-2" id="h62">
                   <span>
                     <i class="ri-phone-fill"></i>
                   </span>

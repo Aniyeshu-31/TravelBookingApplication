@@ -18,6 +18,10 @@ const nav__links = [
     path: "/tours",
     display: "Tours",
   },
+  {
+    path: "/contact",
+    display: "Contact",
+  },
 ];
 
 const Header = () => {
@@ -92,7 +96,7 @@ const Header = () => {
                   </> :
                   <>
                    <Button className="btn secondary__btn">
-                  <Link to="/login"> Login </Link>
+                  <Link to="/login" className="login"> Login </Link>
                 </Button>
                 <Button className="btn primary__btn">
                   {" "}

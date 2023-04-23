@@ -47,7 +47,7 @@ const Testimonials = () => {
         <div className="d-flex align-items-center gap-4 mt-3">
           <img src={ava01} className="w-25 h-25 rounded-2" alt="" />
           <div>
-            <h6 className="mb-0 mt-3"> John Doe</h6>
+            <h6 className="mb-0 mt-3"> Aniyeshu Verma</h6>
             <p> Customer </p>
           </div>
         </div>
@@ -63,7 +63,7 @@ const Testimonials = () => {
         <div className="d-flex align-items-center gap-4 mt-3">
           <img src={ava02} className="w-25 h-25 rounded-2" alt="" />
           <div>
-            <h6 className="mb-0 mt-3"> Lia Franklin</h6>
+            <h6 className="mb-0 mt-3"> Shaily Parmar</h6>
             <p> Customer </p>
           </div>
         </div>
@@ -79,39 +79,35 @@ const Testimonials = () => {
         <div className="d-flex align-items-center gap-4 mt-3">
           <img src={ava03} className="w-25 h-25 rounded-2" alt="" />
           <div>
-            <h6 className="mb-0 mt-3"> John Doe</h6>
+            <h6 className="mb-0 mt-3"> Abhishek Pathak</h6>
             <p> Customer </p>
           </div>
         </div>
       </div>
       <div className="testimonial py-4 px-3">
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci,
-          corrupti possimus illum nesciunt minima ea eveniet atque dolor. Nisi
-          soluta quis voluptatem velit excepturi iure a dolorum totam quasi
-          saepe.
+          Great job, I will definitely be ordering again ! After using booking tour my business skyrocketed!
+          Man, this thing is getting better and better as I learn more about it.
         </p>
 
         <div className="d-flex align-items-center gap-4 mt-3">
           <img src={ava02} className="w-25 h-25 rounded-2" alt="" />
           <div>
-            <h6 className="mb-0 mt-3"> Lia Franklin</h6>
+            <h6 className="mb-0 mt-3"> Darshana Yadav</h6>
             <p> Customer </p>
           </div>
         </div>
       </div>
       <div className="testimonial py-4 px-3">
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci,
-          corrupti possimus illum nesciunt minima ea eveniet atque dolor. Nisi
-          soluta quis voluptatem velit excepturi iure a dolorum totam quasi
-          saepe.
+          Needless to say we are extremely satisfied with the results. BookEase was the best investment 
+          I ever made. Nice work on your booking tours. BookEase impressed.
         </p>
 
         <div className="d-flex align-items-center gap-4 mt-3">
           <img src={ava03} className="w-25 h-25 rounded-2" alt="" />
           <div>
-            <h6 className="mb-0 mt-3"> John Doe</h6>
+            <h6 className="mb-0 mt-3"> Kshitij Tiwari</h6>
             <p> Customer </p>
           </div>
         </div>
@@ -121,4 +117,4 @@ const Testimonials = () => {
   );
 };
 
-export default Testimonials;
+export default Testimonials;
