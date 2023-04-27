@@ -46,10 +46,7 @@ const Footer = () => {
             <div className="logo">
               <img src={logo} alt="" />
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequatur nulla dolorem velit maiores nemo sunt debitis eos
-                cupiditate, reiciendis harum possimus delectus commodi nihil hic
-                saepe numquam dignissimos labore animi!
+              Discover the world with BookEase. We offer personalized travel experiences that cater to your every need. Whether you're looking for adventure, relaxation, or culture, our expert team of travel planners will help you create unforgettable memories. Book your dream vacation today.
               </p>
               <div className="social__links d-flex align-items-center gap-4">
                 <span>

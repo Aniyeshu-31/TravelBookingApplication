@@ -5,6 +5,8 @@ import tourImg04 from "../images/tour-img04.jpg";
 import tourImg05 from "../images/tour-img05.jpg";
 import tourImg06 from "../images/tour-img06.jpg";
 import tourImg07 from "../images/tour-img07.jpg";
+import tourImg07 from "../images/tour-img08.jpg";
+import tourImg07 from "../images/tour-img09.jpg";
 
 const tours = [
   {
@@ -42,7 +44,7 @@ const tours = [
       },
     ],
     avgRating: 4.5,
-    photo: tourImg02,
+    photo: tourImg09,
     featured: true,
   },
   {
@@ -61,7 +63,7 @@ const tours = [
       },
     ],
     avgRating: 4.5,
-    photo: tourImg03,
+    photo: tourImg02,
     featured: true,
   },
   {
@@ -137,7 +139,7 @@ const tours = [
       },
     ],
     avgRating: 4.5,
-    photo: tourImg07,
+    photo: tourImg03,
     featured: false,
   },
   {

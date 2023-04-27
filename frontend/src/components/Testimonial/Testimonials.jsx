@@ -3,6 +3,8 @@ import Slider from "react-slick";
 import ava01 from "../../assets/images/ava-1.jpg";
 import ava02 from "../../assets/images/ava-2.jpg";
 import ava03 from "../../assets/images/ava-3.jpg";
+import ava04 from "../../assets/images/ava-4.png";
+import ava05 from "../../assets/images/ava-5.png";
 
 const Testimonials = () => {
   const settings = {
@@ -38,10 +40,7 @@ const Testimonials = () => {
     <Slider {...settings}>
       <div className="testimonial py-4 px-3">
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci,
-          corrupti possimus illum nesciunt minima ea eveniet atque dolor. Nisi
-          soluta quis voluptatem velit excepturi iure a dolorum totam quasi
-          saepe.
+        Good trip to Ooty with Bookease. Everything was taken care of. Beautiful hill station and fun activities. Friendly staff. I will suggest to always plan your trips with them.
         </p>
 
         <div className="d-flex align-items-center gap-4 mt-3">
@@ -54,14 +53,11 @@ const Testimonials = () => {
       </div>
       <div className="testimonial py-4 px-3">
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci,
-          corrupti possimus illum nesciunt minima ea eveniet atque dolor. Nisi
-          soluta quis voluptatem velit excepturi iure a dolorum totam quasi
-          saepe.
+        I would highly recommend Bookease to anyone who wants to explore India. They are professional, reliable and friendly. The only suggestion I have is to include more vegetarian options in the meals.
         </p>
 
         <div className="d-flex align-items-center gap-4 mt-3">
-          <img src={ava02} className="w-25 h-25 rounded-2" alt="" />
+          <img src={ava05} className="w-25 h-25 rounded-2" alt="" />
           <div>
             <h6 className="mb-0 mt-3"> Shaily Parmar</h6>
             <p> Customer </p>
@@ -70,14 +66,11 @@ const Testimonials = () => {
       </div>
       <div className="testimonial py-4 px-3">
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci,
-          corrupti possimus illum nesciunt minima ea eveniet atque dolor. Nisi
-          soluta quis voluptatem velit excepturi iure a dolorum totam quasi
-          saepe.
+        The only issue I faced was quality of food in a hotel in Mumbai, but Bookease helped me to arrange food from different restaurant outside the hotel.
         </p>
 
         <div className="d-flex align-items-center gap-4 mt-3">
-          <img src={ava03} className="w-25 h-25 rounded-2" alt="" />
+          <img src={ava04} className="w-25 h-25 rounded-2" alt="" />
           <div>
             <h6 className="mb-0 mt-3"> Abhishek Pathak</h6>
             <p> Customer </p>
