@@ -36,7 +36,7 @@ const Booking = ({ tour, avgRating }) => {
       }
 
       const res = await fetch(
-        `https://backend-travel-app.onrender.com/api/v1/booking`,
+        "https://backend-travel-app.onrender.com/api/v1/booking",
         {
           method: 'post',
           headers: {
