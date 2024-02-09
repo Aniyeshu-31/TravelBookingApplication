@@ -2,7 +2,7 @@ import React, { useState,useContext } from "react";
 import "./booking.css";
 import { Form, FormGroup, ListGroup, ListGroupItem, Button } from "reactstrap";
 import { AuthContext } from "../../context/AuthContext";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { BASE_URL } from "../../utils/config";
 const Booking = ({ tour, avgRating }) => {
   const { price, reviews, title } = tour;
@@ -45,13 +45,13 @@ const Booking = ({ tour, avgRating }) => {
       })
       const result = await res.json();
       if(!res.ok){
-        return alert(result.message);
+        navigate("/thank-you");
+        return;
+      //  return alert(result.message);
       }
     } catch (err) {
-       alert(err.message);
+      alert(err.message);
     } 
-
-    navigate("/thank-you");
   };
 
   return (
