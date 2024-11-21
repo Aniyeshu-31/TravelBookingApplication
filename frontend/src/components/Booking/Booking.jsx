@@ -42,7 +42,6 @@ const Booking = ({ tour, avgRating }) => {
         credentials: 'include',
         body: JSON.stringify(booking),
       })
-
       const result = await res.json()
       console.log(result)
       if (!res.ok) {
