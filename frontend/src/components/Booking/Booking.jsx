@@ -35,6 +35,7 @@ const Booking = ({ tour, avgRating }) => {
         return alert('Please Sign In')
       }
 
+<<<<<<< HEAD
       const res = await fetch(
         "https://backend-travel-app.onrender.com/api/v1/booking",
         {
@@ -46,6 +47,16 @@ const Booking = ({ tour, avgRating }) => {
           body: JSON.stringify(booking),
         }
       )
+=======
+      const res = await fetch("https://backend-travel-app.onrender.com/api/v1/booking", {
+        method: 'post',
+        headers: {
+          'content-type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify(booking),
+      })
+>>>>>>> 51baf75de65fda6464351709c5254e2329da74d4
       const result = await res.json()
       console.log(result)
       if (!res.ok) {
