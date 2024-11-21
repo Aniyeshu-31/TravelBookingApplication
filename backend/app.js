@@ -20,21 +20,9 @@ const corsOptions = {
   credentials: true, // Allow cookies and credentials
 };
 // Allow frontend at localhost:3000
-const allowedOrigins = [
-  'http://localhost:3000',
-  'https://backend-travel-app.onrender.com',
-]
 
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true) // Allow the request
-    } else {
-      callback(new Error('Not allowed by CORS')) // Reject the request
-    }
-  },
-  credentials: true, // Allow cookies
-}
+
+
 app.use(cors(corsOptions))
 mongoose.set('strictQuery', false)
 const connect = async () => {
