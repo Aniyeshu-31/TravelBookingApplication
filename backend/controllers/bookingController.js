@@ -1,15 +1,31 @@
 import Booking from '../models/booking.js'
 export const createbooking = async(req,res,next)=>{
     const newBooking = new Booking(req.body);
+    // try {
+    //     const savedBooking = await newBooking.save();
+    //     res.status(200).json({success:true,message:'Booking Saved Successfully!!',data:savedBooking});
+    // } catch (err) {
+    //     console.log(err);
+    //     res.status(500).json({
+    //         success:false,
+    //         message:'Booking not saved successfully!!'
+    //     });
+    // }
     try {
-        const savedBooking = await newBooking.save();
-        res.status(200).json({success:true,message:'Booking Saved Successfully!!',data:savedBooking});
+      const savedBooking = await newBooking.save()
+      res
+        .status(200)
+        .json({
+          success: true,
+          message: 'Booking Saved Successfully!!',
+          data: savedBooking,
+        })
     } catch (err) {
-        console.log(err);
-        res.status(500).json({
-            success:false,
-            message:'Booking not saved successfully!!'
-        });
+      console.error(err) // This will log the error in more detail
+      res.status(500).json({
+        success: false,
+        message: `Error: ${err.message}`, // Return the error message to help with debugging
+      })
     }
 }
 

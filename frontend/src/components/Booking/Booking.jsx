@@ -1,66 +1,64 @@
-import React, { useState,useContext } from "react";
-import "./booking.css";
-import { Form, FormGroup, ListGroup, ListGroupItem, Button } from "reactstrap";
-import { AuthContext } from "../../context/AuthContext";
-import { useNavigate} from "react-router-dom";
-// import { BASE_URL } from "../../utils/config";
+import React, { useState, useContext } from 'react'
+import './booking.css'
+import { Form, FormGroup, ListGroup, ListGroupItem, Button } from 'reactstrap'
+import { AuthContext } from '../../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
+import { BASE_URL } from "../../utils/config";
 const Booking = ({ tour, avgRating }) => {
-  const { price, reviews, title } = tour;
-  const navigate = useNavigate();
-  const {user} = useContext(AuthContext);
+  const { price, reviews, title } = tour
+  const navigate = useNavigate()
+  const { user } = useContext(AuthContext)
   const [booking, setBooking] = useState({
     userId: user && user._id,
     userEmail: user && user.email,
     tourname: title,
-    fullName: "",
-    phone: "",
+    fullName: '',
+    phone: '',
     guestSize: 1,
-    bookAt: "",
-  });
+    bookAt: '',
+  })
 
   const handleChange = (e) => {
-    setBooking((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-  };
+    setBooking((prev) => ({ ...prev, [e.target.id]: e.target.value }))
+  }
 
-  const serviceFee = 10;
+  const serviceFee = 10
   const totalAmount =
-    Number(price) * Number(booking.guestSize) + Number(serviceFee);
+    Number(price) * Number(booking.guestSize) + Number(serviceFee)
 
   //send data to the server
   const handleClick = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
-      if(!user || user===undefined || user===null){
-        return alert('Please Sign In');
+      if (!user || user === undefined || user === null) {
+        return alert('Please Sign In')
       }
 
-      const res = await fetch(
-        "https://backend-travel-app.onrender.com/api/v1/booking",
-        {
-          method: 'post',
-          headers: {
-            'content-type': 'application/json',
-          },
-          credentials: 'include',
-          body: JSON.stringify(booking),
-        }
-      )
-      const result = await res.json();
-      if(!res.ok){
-        console.log(result);
+      const res = await fetch(`${BASE_URL}/booking`, {
+        method: 'post',
+        headers: {
+          'content-type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify(booking),
+      })
+      const result = await res.json()
+      console.log(result)
+      if (!res.ok) {
+        console.log(result)
       }
+      navigate('/thank-you')
     } catch (err) {
-      alert(err.message);
-    } 
-    navigate("/thank-you");
-  };
+      alert(err.message)
+    }
+  }
 
   return (
     <div className="booking">
       <div className="booking__top d-flex align-items-center justify-content-between">
         <h3>
-          {" "}
+          {' '}
           ${price} <span> /per person</span>
         </h3>
         <span className="tour__rating d-flex align-items-center ">
@@ -131,12 +129,12 @@ const Booking = ({ tour, avgRating }) => {
         </ListGroup>
 
         <Button className="btn primary__btn w-100 mt-4" onClick={handleClick}>
-          {" "}
+          {' '}
           Book Now
         </Button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Booking;
+export default Booking
