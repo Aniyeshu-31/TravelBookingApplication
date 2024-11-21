@@ -117,7 +117,7 @@ const Footer = () => {
                   Email:
                 </h6>
 
-                <p className="mb-0"> adityadns03@gmail.com</p>
+                <p className="mb-0"> aniyeshuverma31@gmail.com</p>
               </ListGroupItem>
               <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-3">
                 <h6 className="mb-0 d-flex align-items-center gap-2" id="h62">
@@ -127,14 +127,14 @@ const Footer = () => {
                   Phone:
                 </h6>
 
-                <p className="mb-0"> + 91 9835221957</p>
+                <p className="mb-0"> + 91 6394615848</p>
               </ListGroupItem>
             </ListGroup>
           </Col>
 
           <Col lg="12" className="text-center pt-5">
             <p className="copyright">
-              Copyright{year}, design and develop By Aditya Ray. All rights
+              Copyright{year}, design and develop By Aniyeshu Verma. All rights
               reserved.
             </p>
           </Col>
