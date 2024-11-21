@@ -20,9 +20,6 @@ const corsOptions = {
   credentials: true, // Allow cookies and credentials
 };
 // Allow frontend at localhost:3000
-
-
-
 app.use(cors(corsOptions))
 mongoose.set('strictQuery', false)
 const connect = async () => {
