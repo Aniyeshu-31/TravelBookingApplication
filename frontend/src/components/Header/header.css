@@ -9,10 +9,10 @@
   align-items: center;
   padding: 0 20px;
 }
+
 /* Logo */
 .logo img {
   width: 30%;
-  justify-content: space-between;
   margin-left: -9rem;
   margin-top: -0.5rem;
 }
@@ -40,13 +40,17 @@
   color: var(--heading-color);
   display: none;
   position: absolute;
-  top: 0px;
+  top: 0;
   right: 3rem;
   z-index: 1000;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
 }
-
+.container__btn{
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
 /* Sticky Header */
 .sticky__header {
   width: 100%;
@@ -60,52 +64,31 @@
   z-index: 999;
 }
 
-/* Responsive Design */
-@media only screen and (min-width: 1200px){
-  .container__btn{
-    display: flex;
-    top: 0;
-    right: 1rem;
-    margin-top: -0rem;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-   }
+/* Hide Login/Register in desktop view */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .container__btn {
+    display: none;
+  }
 }
-@media only screen and (min-width: 768px) and (max-width: 1200px) {
-  .logo img {
-  width: 30%;
-  margin-left: -5rem;
-  margin-top: -0.5rem;
-}  
-  .container__btn{
-    display: flex;
-    top: 0;
-    right: 1rem;
-    margin-top: -0rem;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-   }
-}
+
+/* Mobile Navigation */
 @media only screen and (max-width: 992px) {
   .logo img {
     width: 35%;
   }
+
   .container__btn {
-    display: flex;
-    margin-top: -0.3rem;
     display: none;
   }
-  /* Hide the navigation by default */
+
+  /* Mobile menu */
   .navigation {
     position: fixed;
     top: 0;
     right: 0;
-    width: 40%;
-    margin-top: 18rem;
-    height: 12vh;
-    background: white; /* Darker background */
+    width: 33%;
+    height: 119vh;
+    background: white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -113,38 +96,59 @@
     z-index: 999;
     transition: transform 0.4s ease-in-out;
     transform: translateX(100%);
+    padding: 0.5rem 0;
   }
 
-  /* Show menu when toggled */
+  /* Show when toggled */
   .navigation.show__menu {
     transform: translateX(0);
   }
-
+  ul .menu{
+    gap:-5rem;
+  }
   .menu {
-    background: #fff;
-    width: 80%;
-    height: auto;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 2rem;
-    border-radius: 10px;
+     padding: 0.5rem 0; 
   }
 
   .menu .nav__item {
-    margin-bottom: 1rem;
+     margin-bottom: 0.2rem; /* 🔹 Reduced spacing between menu items */
+    padding: 0.3rem 0; /* 🔹 Adjusted padding for compact spacing */
+  }
+
+  .nav__item a {
+     font-size: 0.95rem; /* 🔹 Slightly smaller font for better alignment */
+    padding: 0.4rem 0.8rem; /* 🔹 Less padding inside links */
   }
 
   .mobile__menu {
     display: block;
   }
+
+  /* Show login/register inside mobile menu */
+  .mobile__only {
+    display: block !important;
+    margin-bottom: 0.5rem; /* Reduced space for mobile login/register */
+  }
 }
+/* Hide login/register by default */
+@media only screen and (min-width: 993px) {
+  .mobile__only {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 576px) {
   .logo img {
     margin-left: -2rem;
     width: 30%;
   }
+
   .menu {
+    padding: 0.3rem 0;
     width: 90%;
   }
 }
