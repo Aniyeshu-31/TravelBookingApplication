@@ -13,6 +13,7 @@
 }
 
 .common__section h1 {
+    margin: auto;
     font-size: 2.5rem;
     color: #fff;
 }

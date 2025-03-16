@@ -4,6 +4,7 @@ import { AuthContext } from '../../context/AuthContext'
 import { NavLink, Link, useNavigate } from 'react-router-dom'
 import logo from '../../assets/images/logo.png'
 import './header.css'
+import { useState } from 'react'
 
 const nav__links = [
   {
@@ -29,12 +30,13 @@ const Header = () => {
   const menuRef = useRef(null)
   const navigate = useNavigate()
   const { user, dispatch } = useContext(AuthContext)
-
+  const [display,setDisplay] = useState(true);
   const logout = () => {
     dispatch({ type: 'LOGOUT' })
     navigate('/')
   }
  const toggleMenu = () => {
+  setDisplay(false);
    if (menuRef.current) {
      const isOpen = menuRef.current.classList.contains('show__menu')
      if (isOpen) {
@@ -57,14 +59,15 @@ const Header = () => {
     })
   }
   const handleNavLinkClick = ()=>{
-     if (menuRef.current) {
-       const isOpen = menuRef.current.classList.contains('show__menu')
-       if (isOpen) {
-         menuRef.current.classList.remove('show__menu')
-       } else {
-         menuRef.current.classList.add('show__menu')
-       }
-     }
+    if (menuRef.current) {
+      const isOpen = menuRef.current.classList.contains('show__menu')
+      if (isOpen) {
+        menuRef.current.classList.remove('show__menu')
+      } else {
+        menuRef.current.classList.add('show__menu')
+      }
+    }
+    setDisplay(true);
   }
   useEffect(() => {
     stickyHeaderFunc()
@@ -127,9 +130,9 @@ const Header = () => {
                   </div>
                 )}
               </div>
-              <span className="mobile__menu" onClick={toggleMenu}>
+              {display && <span className="mobile__menu" onClick={toggleMenu}>
                 <i className="ri-menu-line"></i>
-              </span>
+              </span>}
             </div>
           </div>
         </Row>

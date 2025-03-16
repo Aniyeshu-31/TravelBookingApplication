@@ -40,8 +40,20 @@ a {
 ul {
   list-style: none;
 }
-
+.input_name{
+  width: 100%;
+}
+.input_Email{
+  width: 100%;
+}
+.input_Sub{
+  width: 100%;
+}
+.text_input{
+  width: 100%;
+}
 .primary__btn {
+  margin: auto;
   background: var(--secondary-color) !important;
   border: none !important;
   border-radius: 50px !important;
@@ -93,6 +105,27 @@ ul {
   color: var(--heading-color);
 }
 @media only screen and (max-width:992px) {
+  .input_name{
+    padding-left: 100%;
+    padding-right: 100%;
+  width: 100%;
+}
+.input_Email{
+   padding-left: 100%;
+    padding-right: 100%;
+  width: 100%;
+}
+.input_Sub{
+   padding-left: 100%;
+    padding-right: 100%;
+  width: 100%;
+}
+.text_input{
+   padding-left: 100%;
+    padding-right: 100%;
+  width: 100%;
+}
+
   .primary__btn a,.secondary__btn a{
     font-size: 0.9rem;
   }
@@ -103,7 +136,26 @@ ul {
          padding: 40px 0;   
   }
 }
+@media only screen and (min-width:320px){
+  .btn.btn-primary {
+    width: 3rem;
+    margin: auto;
+  }
+}
 @media only screen and (max-width:768px){
+  .input_name{
+  width: 100%;
+}
+.input_Email{
+  width: 100%;
+}
+.input_Sub{
+
+  width: 100%;
+}
+.text_input{
+  width: 100%;
+}
   .section__subtitle{
      font-size: 1.3rem;
   }
