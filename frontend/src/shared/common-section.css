@@ -1,4 +1,4 @@
-
+/* 
 .common__section {
     
     background: linear-gradient(rgba(0,0,0,0.45) , rgba(0,0,0,0.45)),
@@ -14,6 +14,34 @@
 
 .common__section h1 {
     margin: auto;
+    text-align: center;
     font-size: 2.5rem;
     color: #fff;
+} */
+
+.common__section {
+    background: linear-gradient(rgba(0,0,0,0.45) , rgba(0,0,0,0.45)),
+    url('../assets/images/tour.jpg') no-repeat center center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers content horizontally */
+    text-align: center; /* Ensures text inside stays centered */
+    padding: 3rem 0;
+}
+
+.common__section h1 {
+    text-align: center; /* Ensures <h1> is centered */
+    width: 100%;
+}
+
+/* Ensure proper centering on smaller screens */
+@media screen and (max-width: 768px) {
+    .common__section {
+        padding: 2rem 0;
+    }
+
+    .common__section h1 {
+        font-size: 1.8rem; /* Adjust font size if needed */
+    }
 }

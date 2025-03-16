@@ -102,9 +102,9 @@
     position: fixed;
     top: 0;
     right: 0;
-    width: 20%;
+    width: 40%;
     margin-top: 18rem;
-    height: 3vh;
+    height: 12vh;
     background: white; /* Darker background */
     display: flex;
     flex-direction: column;
