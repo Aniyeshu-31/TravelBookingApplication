@@ -101,6 +101,7 @@
 
   /* Show when toggled */
   .navigation.show__menu {
+    background-color: slategray;
     transform: translateX(0);
   }
   ul .menu{
