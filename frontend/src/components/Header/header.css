@@ -1,24 +1,25 @@
 .header {
   width: 100%;
-  height: 80px;
-  line-height: 80px;
-}
-
-.logo img {
-  width: 23%;
-  margin-left: -120px;
-  margin-top: -8px;
-}
-.header {
+  height: 100px;
+  line-height: 100px;
   border-bottom: 1px solid black;
   border-radius: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
 }
-.menu {
-  margin-bottom: 0;
+/* Logo */
+.logo img {
+  width: 30%;
+  justify-content: space-between;
+  margin-left: -9rem;
+  margin-top: -0.5rem;
 }
 
-.login {
-  margin-left: 25px;
+/* Menu */
+.menu {
+  margin-bottom: 0;
 }
 
 .nav__item a {
@@ -32,12 +33,19 @@
   color: var(--secondary-color);
 }
 
-.mobile_menu {
-  font-size: 1.3rem;
+/* Mobile Menu Icon */
+.mobile__menu {
+  cursor: pointer;
+  font-size: 1.5rem;
   color: var(--heading-color);
   display: none;
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  z-index: 1000;
 }
 
+/* Sticky Header */
 .sticky__header {
   width: 100%;
   height: 80px;
@@ -50,48 +58,90 @@
   z-index: 999;
 }
 
+/* Responsive Design */
+@media only screen and (min-width: 1200px){
+  .container__btn{
+    display: flex;
+    top: 0;
+    right: 1rem;
+    margin-top: -0rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+   }
+}
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .logo img {
+  width: 50%;
+  margin-left: -5rem;
+  margin-top: -0.5rem;
+}  
+  .container__btn{
+    display: flex;
+    top: 0;
+    right: 1rem;
+    margin-top: -0rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+   }
+}
 @media only screen and (max-width: 992px) {
   .logo img {
-    width: 20%;
-    margin-left: -7vh;
+    width: 30%;
   }
-
-  .navigation {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgb(219, 26, 26);
-    z-index: 999;
+  .container__btn {
+    display: flex;
+    margin-top: -0.3rem;
     display: none;
   }
-  .menu {
-    position: absolute;
+  /* Hide the navigation by default */
+  .navigation {
+    position: fixed;
     top: 0;
     right: 0;
-    width: calc(100%-75%);
-    height: 100%;
-    background: #fff;
+    width: 50%;
+    height: 100vh;
+    background: white; /* Darker background */
+    display: flex;
     flex-direction: column;
-    line-height: 0.5rem;
+    align-items: center;
     justify-content: center;
-    z-index: 9999;
+    z-index: 999;
+    transition: transform 0.4s ease-in-out;
+    transform: translateX(100%);
   }
-  .show__menu {
-    display: block;
+
+  /* Show menu when toggled */
+  .navigation.show__menu {
+    transform: translateX(0);
   }
-  .mobile_menu {
+
+  .menu {
+    background: #fff;
+    width: 80%;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+
+  .menu .nav__item {
+    margin-bottom: 1rem;
+  }
+
+  .mobile__menu {
     display: block;
   }
 }
-
 @media only screen and (max-width: 576px) {
   .logo img {
-    width: 45%;
+    margin-left: -2rem;
+    width: 30%;
   }
-
   .menu {
-    width: calc(100% - 50%);
+    width: 90%;
   }
 }
