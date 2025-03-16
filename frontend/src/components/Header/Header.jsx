@@ -56,7 +56,16 @@ const Header = () => {
       }
     })
   }
-
+  const handleNavLinkClick = ()=>{
+     if (menuRef.current) {
+       const isOpen = menuRef.current.classList.contains('show__menu')
+       if (isOpen) {
+         menuRef.current.classList.remove('show__menu')
+       } else {
+         menuRef.current.classList.add('show__menu')
+       }
+     }
+  }
   useEffect(() => {
     stickyHeaderFunc()
 
@@ -80,6 +89,7 @@ const Header = () => {
                 {nav__links.map((item, index) => (
                   <li className="nav__item" key={index}>
                     <NavLink
+                    onClick={handleNavLinkClick}
                       to={item.path}
                       className={(navClass) =>
                         navClass.isActive ? 'active__link' : ''

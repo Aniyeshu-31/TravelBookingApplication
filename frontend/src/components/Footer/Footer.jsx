@@ -44,7 +44,7 @@ const Footer = () => {
         <Row>
           <Col lg="3">
             <div className="logo">
-              <img src={logo} alt="" />
+              {/* <img src={logo} alt="" /> */}
               <p>
               Discover the world with BookEase. We offer personalized travel experiences that cater to your every need. Whether you're looking for adventure, relaxation, or culture, our expert team of travel planners will help you create unforgettable memories. Book your dream vacation today.
               </p>
