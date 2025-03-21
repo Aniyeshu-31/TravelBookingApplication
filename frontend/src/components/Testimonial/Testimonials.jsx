@@ -5,7 +5,7 @@ import ava02 from "../../assets/images/ava-2.jpg";
 import ava03 from "../../assets/images/ava-3.jpg";
 import ava04 from "../../assets/images/ava-4.png";
 import ava05 from "../../assets/images/ava-5.png";
-
+import './testimonials.css'
 const Testimonials = () => {
   const settings = {
     dots: true,
@@ -15,8 +15,8 @@ const Testimonials = () => {
     swipeToSlide: true,
     autoplaySpeed: 2000,
     slidesToShow: 3,
-
-    resposive: [
+    responsive: [
+      // ✅ Corrected typo here
       {
         breakpoint: 992,
         settings: {

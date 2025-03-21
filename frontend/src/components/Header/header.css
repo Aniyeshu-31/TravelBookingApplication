@@ -141,7 +141,16 @@
     display: none;
   }
 }
-
+@media only screen and (min-width:1024px) {
+  .logo{
+    margin-left: 6rem;
+  }
+}
+@media only screen and (min-width:1440px){
+   .logo{
+     margin-left: 3rem;
+   }
+}
 @media only screen and (max-width: 576px) {
   .logo img {
     margin-left: -2rem;

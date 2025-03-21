@@ -1,0 +1,68 @@
+/* Individual Testimonial Box */
+.testimonial {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 350px; /* Ensures equal height */
+  min-height: 350px;
+  max-width: 350px;
+  margin: auto;
+}
+
+/* Text Area */
+.testimonial p {
+  flex-grow: 1; /* Expands text evenly */
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  overflow-wrap: break-word; /* Prevents text overflow */
+  word-wrap: break-word;
+}
+
+/* Profile Section */
+.testimonial .d-flex {
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: auto; /* Pushes to bottom */
+}
+
+/* Profile Image */
+.testimonial img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Name */
+.testimonial h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap; /* Prevents line breaks */
+}
+
+/* Role */
+.testimonial p:last-child {
+  font-size: 0.9rem;
+  color: #777;
+  margin: 0;
+}
+
+/* Slick Dots */
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #777;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #000;
+}

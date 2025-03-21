@@ -59,7 +59,6 @@ const Header = () => {
             <div className="logo">
               <img src={logo} alt="Logo" />
             </div>
-
             {/* Navigation Menu */}
             <div className="navigation" ref={menuRef}>
               <ul
