@@ -33,6 +33,7 @@ const Header = () => {
   // Close menu when clicking a link
   const closeMenu = () => {
     setMenuOpen(false)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   useEffect(() => {
