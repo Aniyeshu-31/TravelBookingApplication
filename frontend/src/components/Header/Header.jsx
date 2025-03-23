@@ -94,8 +94,8 @@ const Header = () => {
             <div className="nav__right d-flex align-items-center gap-4">
               {user ? (
                 <>
-                  <h5 className="mb-0">{user.username}</h5>
-                  <Button className="btn btn-dark" onClick={logout}>
+                  <h5 className="mb-0" style={{color:'white'}}>{user.username}</h5>
+                  <Button className="btn btn-primary" onClick={logout}>
                     Logout
                   </Button>
                 </>
