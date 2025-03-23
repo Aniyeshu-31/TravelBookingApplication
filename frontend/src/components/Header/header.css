@@ -1,164 +1,254 @@
+/* General Header Styling */
 .header {
+  height: 6rem;
   width: 100%;
-  height: 100px;
-  line-height: 100px;
-  border-bottom: 1px solid black;
-  border-radius: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgb(198, 244, 237);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  box-sizing: border-box; /* Ensures padding doesn't reduce width */
+}
+
+/* Sticky Header Effect */
+.sticky__header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Fix width shrinking issue */
+  background: rgb(240, 126, 126);
+  box-shadow: 3px 3px 8px -3px rgb(225, 134, 134);
+  padding: 10px 0;
+  z-index: 1000;
+  box-sizing: border-box; /* Prevents unexpected width changes */
+}
+
+/* Navigation Wrapper */
+.nav__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 2rem;
 }
 
 /* Logo */
-.logo img {
-  width: 30%;
-  margin-left: -9rem;
-  margin-top: -0.5rem;
+.logo {
+  margin-left: -2.7rem;
+  flex: 1;
 }
 
-/* Menu */
+.logo img {
+  height: 80px;
+}
+
+/* Desktop Navigation */
+.navigation {
+  flex: 1;
+  margin-top: 0.6rem;
+  display: flex;
+  justify-content: center;
+}
+
 .menu {
-  margin-bottom: 0;
+  display: flex;
+  list-style: none;
+  gap: 2rem;
 }
 
 .nav__item a {
   text-decoration: none;
-  color: var(--heading-color);
+  color: #333;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
 }
 
+.nav__item a:hover,
 .nav__item a.active__link {
-  color: var(--secondary-color);
+  color: #ff5733;
+  background-color: rgba(255, 87, 51, 0.1);
 }
 
-/* Mobile Menu Icon */
-.mobile__menu {
-  cursor: pointer;
-  font-size: 1.5rem;
-  color: var(--heading-color);
-  display: none;
-  position: absolute;
-  top: 0;
-  right: 3rem;
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-}
-.container__btn{
+/* Right-Side Buttons (Login & Register) */
+.nav__right {
+  flex: 1;
   display: flex;
-  flex-direction: row;
-  margin: auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
 }
-/* Sticky Header */
-.sticky__header {
-  width: 100%;
-  height: 80px;
-  line-height: 80px;
-  background: #fff;
-  position: sticky;
+
+.container__btn .btn {
+  padding: 10px 15px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+
+.primary__btn {
+  background: #ff5733;
+  color: white;
+}
+
+.secondary__btn {
+  background: transparent;
+  border: 2px solid #ff5733;
+  color: #ff5733;
+}
+
+.btn a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+/* Mobile Menu Button (Hamburger Icon) */
+.mobile__menu {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+  border: 1px solid aquamarine;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 1.5rem;
+}
+
+/* Sidebar for Mobile */
+.mobile__sidebar {
+  position: fixed;
   top: 0;
-  left: 0;
-  box-shadow: 3px 3px 8px -3px #ddd;
-  z-index: 999;
+  right: -250px;
+  width: 250px;
+  height: 100vh;
+  background: white;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  transition: right 0.3s ease-in-out;
+  z-index: 1200;
 }
 
-/* Hide Login/Register in desktop view */
-@media only screen and (min-width: 768px) and (max-width: 992px) {
-  .container__btn {
-    display: none;
-  }
+.mobile__sidebar.show {
+  right: 0;
 }
 
-/* Mobile Navigation */
-@media only screen and (max-width: 992px) {
-  .logo img {
-    width: 35%;
-  }
+.mobile__sidebar .close__btn {
+  align-self: flex-end;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #ff5733;
+}
 
-  .container__btn {
-    display: none;
-  }
+.mobile__sidebar .menu {
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
 
-  /* Mobile menu */
+.mobile__sidebar .container__btn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mobile__only {
+  display: none;
+}
+
+/* Responsive Design for Mobile */
+@media screen and (max-width: 768px) {
+  /* Header Background in Mobile */
+  .header {
+    background-color: black;
+  }
+  .mobile__only{
+    gap: 1.5rem;
+    flex-direction: column;
+    display: flex;
+  }
+  /* Hide desktop navigation */
   .navigation {
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: 6rem;
+    left: 0;
     right: 0;
-    width: 33%;
-    height: 100vh;
-    background: white;
+    width: 100%;
+    background: rgb(7, 9, 33);
+    text-align: center;
+    padding: 1.5rem 0;
+    border-radius: 1rem;
+    border: 4px solid aquamarine;
+    transition: all 0.4s ease-in-out;
+    z-index: 999;
+     opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+  }
+
+  /* Show menu when toggled */
+  .navigation.show__menu {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    padding-right: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  /* Mobile Navigation Links */
+  .nav__item a {
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    text-decoration: none;
+  }
+
+  /* Ensure Login & Register buttons are shown */
+  .navigation.show__menu .nav__right {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-    transition: transform 0.4s ease-in-out;
-    transform: translateX(100%);
-    padding: 0.5rem 0;
+    gap: 1rem;
+    margin-top: 1rem;
   }
 
-  /* Show when toggled */
-  .navigation.show__menu {
-    background-color: slategray;
-    transform: translateX(0);
-  }
-  ul .menu{
-    gap:-5rem;
-  }
-  .menu {
-    width: 100%;
+  .navigation.show__menu .container__btn {
+    display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 10px;
+  }
+
+  /* Ensure buttons are visible */
+  .primary__btn, .secondary__btn {
+    display: block;
     text-align: center;
-     padding: 0.5rem 0; 
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    width: 80%;
   }
 
-  .menu .nav__item {
-     margin-bottom: 0.2rem; /* 🔹 Reduced spacing between menu items */
-    padding: 0.3rem 0; /* 🔹 Adjusted padding for compact spacing */
-  }
-
-  .nav__item a {
-     font-size: 0.95rem; /* 🔹 Slightly smaller font for better alignment */
-    padding: 0.4rem 0.8rem; /* 🔹 Less padding inside links */
-  }
-
+  /* Mobile Menu Button (Hamburger) */
   .mobile__menu {
     display: block;
   }
 
-  /* Show login/register inside mobile menu */
-  .mobile__only {
-    display: block !important;
-    margin-bottom: 0.5rem; /* Reduced space for mobile login/register */
-  }
-}
-/* Hide login/register by default */
-@media only screen and (min-width: 993px) {
-  .mobile__only {
+  /* Hide desktop buttons */
+  .nav__right .container__btn {
     display: none;
-  }
-}
-@media only screen and (min-width:1024px) {
-  .logo{
-    margin-left: 6rem;
-  }
-}
-@media only screen and (min-width:1440px){
-   .logo{
-     margin-left: 3rem;
-   }
-}
-@media only screen and (max-width: 576px) {
-  .logo img {
-    margin-left: -2rem;
-    width: 30%;
-  }
-
-  .menu {
-    padding: 0.3rem 0;
-    width: 90%;
   }
 }
