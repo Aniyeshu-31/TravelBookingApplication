@@ -22,7 +22,7 @@ const Header = () => {
     }
   // Logout function
   const logout = () => {
-    dispatch({ type: 'LOGOUT' })
+    // dispatch({ type: 'LOGOUT' })
     navigate('/')
     setMenuOpen(false) // Close menu on logout
   }
@@ -95,8 +95,8 @@ const Header = () => {
             <div className="nav__right d-flex align-items-center gap-4">
               {user ? (
                 <>
-                  <h5 className="mb-0" style={{color:'white'}}>{user.username}</h5>
-                  <Button className="btn btn-primary" onClick={logout}>
+                  <h5 className="mb-0">{user.username}</h5>
+                  <Button className="btn" onClick={logout}>
                     Logout
                   </Button>
                 </>

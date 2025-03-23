@@ -83,7 +83,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 .container__btn{
   display: flex;
@@ -114,7 +114,24 @@
 .btn:hover {
   opacity: 0.8;
 }
+.nav__right .btn {
+  padding: 8px 15px;
+  font-size: 1rem;
+  background: #ff5733; /* Use a better color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+.nav__right h5 {
+  margin:0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
 
+.nav__right .btn:hover {
+  background: #d84315;
+}
 /* Mobile Menu Button (Hamburger Icon) */
 .mobile__menu {
   display: none;
@@ -176,7 +193,7 @@
 @media screen and (max-width: 768px) {
   /* Header Background in Mobile */
   .header {
-    background-color: black;
+    background-color: rgb(145, 212, 209);
   }
   .mobile__only{
     gap: 1.5rem;
