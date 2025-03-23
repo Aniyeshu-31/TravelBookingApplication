@@ -15,13 +15,18 @@ const Newsletter = () => {
               <div className="newsletter__input">
                 <input type="email" placeholder="Enter your email" />
                 <button className="btn newsletter__btn">Subscribe</button>
-              </div>
+              </div>  
 
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Tempore nesciunt, ut nemo ducimus repellat harum quod laborum
-                fugiat voluptatem aliquid rem, corrupti culpa sapiente.
-                Necessitatibus voluptatum a illum voluptates natus.
+                Embark on a journey beyond the ordinary! Whether you crave the
+                serenity of sun-kissed beaches, the thrill of towering mountain
+                peaks, or the charm of historic city streets, every destination
+                holds a unique story waiting to be discovered. Indulge in local
+                cuisines, immerse yourself in diverse cultures, and create
+                unforgettable memories along the way. From hidden gems off the
+                beaten path to world-famous landmarks, let your adventures be
+                guided by curiosity and a passion for exploration. Pack your
+                bags, set your soul free, and let the world surprise you!
               </p>
             </div>
           </Col>
@@ -33,7 +38,7 @@ const Newsletter = () => {
         </Row>
       </Container>
     </section>
-  );
+  )
 };
 
 export default Newsletter;

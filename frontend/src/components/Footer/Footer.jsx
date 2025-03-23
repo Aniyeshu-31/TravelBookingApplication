@@ -11,8 +11,7 @@ const quick__links = [
   { path: '/tours', display: 'Tours' },
 ]
 
-const quick__links2 = [
-  { path: '/gallery', display: 'Gallery' },
+const quick__links2 = [ 
   { path: '/login', display: 'Login' },
   { path: '/register', display: 'Register' },
 ]
@@ -92,7 +91,7 @@ const Footer = () => {
                   <i className="ri-map-pin-line"></i>
                 </div>
                 <div className="contact-text">
-                  <span>Address: Lucknow , India</span>
+                  <span>Address: Delhi , India</span>
                   <p></p>
                 </div>
               </ListGroupItem>

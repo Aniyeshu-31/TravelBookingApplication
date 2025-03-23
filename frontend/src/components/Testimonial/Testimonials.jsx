@@ -53,19 +53,6 @@ const Testimonials = () => {
       </div>
       <div className="testimonial py-4 px-3">
         <p>
-        I would highly recommend Bookease to anyone who wants to explore India. They are professional, reliable and friendly. The only suggestion I have is to include more vegetarian options in the meals.
-        </p>
-
-        <div className="d-flex align-items-center gap-4 mt-3">
-          <img src={ava05} className="w-25 h-25 rounded-2" alt="" />
-          <div>
-            <h6 className="mb-0 mt-3"> Shaily Parmar</h6>
-            <p> Customer </p>
-          </div>
-        </div>
-      </div>
-      <div className="testimonial py-4 px-3">
-        <p>
         The only issue I faced was quality of food in a hotel in Mumbai, but Bookease helped me to arrange food from different restaurant outside the hotel.
         </p>
 

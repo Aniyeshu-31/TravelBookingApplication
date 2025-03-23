@@ -2,7 +2,15 @@
     width: 2.3rem;
     height: 2.3rem;
 }
-
+.hero__content p{
+    text-align: justify;
+}
+.experience__content h2{
+    text-align: justify;
+}
+.experience__content p{
+    text-align: justify;
+}
 .hero__content h1{
     font-size: 3.2rem;
     font-weight: 600;
