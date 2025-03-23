@@ -22,7 +22,7 @@ const Header = () => {
     }
   // Logout function
   const logout = () => {
-    // dispatch({ type: 'LOGOUT' })
+    dispatch({ type: 'LOGOUT' })
     navigate('/')
     setMenuOpen(false) // Close menu on logout
   }
