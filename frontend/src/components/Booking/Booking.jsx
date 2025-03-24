@@ -4,6 +4,7 @@ import { Form, FormGroup, ListGroup, ListGroupItem, Button } from 'reactstrap'
 import { AuthContext } from '../../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import { BASE_URL } from "../../utils/config";
+import { loadStripe } from '@stripe/stripe-js'
 const Booking = ({ tour, avgRating }) => {
   const { price, reviews, title } = tour
   const navigate = useNavigate()
@@ -127,9 +128,14 @@ const Booking = ({ tour, avgRating }) => {
           </ListGroupItem>
         </ListGroup>
 
-        <Button className="btn primary__btn w-100 mt-4" onClick={handleClick}>
+        {/* <Button className="btn primary__btn w-100 mt-4" onClick={handleClick}>
           {' '}
           Book Now
+        </Button> */}
+
+        <Button className="btn primary__btn w-100 mt-4" onClick={handleClick}>
+          {' '}
+           Pay Now {totalAmount}
         </Button>
       </div>
     </div>
