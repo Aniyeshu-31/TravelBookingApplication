@@ -67,24 +67,24 @@
   {
     "title": "Cherry Blossoms Spring",
     "city": "Tokyo",
-    "address": "Somewhere in Japan",
+    "address": "Japan",
     "distance": 500,
     "price": 99,
     "maxGroupSize": 8,
-    "desc": "this is the description",
+    "desc": "Spring in Tokyo is synonymous with cherry blossoms (sakura), transforming the city into a breathtaking sea of pink and white blooms. The cherry blossom season typically peaks between late March and early April, depending on the weather. During this time, locals and tourists alike participate in hanami (flower viewing), a beloved tradition of gathering under the cherry trees for picnics and celebrations.",
     "reviews": [],
 
     "photo": "/tour-images/tour-img06.jpg",
     "featured": true
   },
   {
-    "title": "Holmen Lofoten, France",
+    "title": "Holmen Lofoten",
     "city": "Paris",
-    "address": "Somewhere in France",
+    "address": "Norway",
     "distance": 500,
     "price": 99,
     "maxGroupSize": 8,
-    "desc": "this is the description",
+    "desc": "Holmen Lofoten offers a unique getaway experience, focusing on nature, adventure, and sustainability. It is particularly popular for activities like hiking, fishing, kayaking, and even Northern Lights viewing in the winter months. The retreat also emphasizes high-quality dining with locally sourced ingredients, often highlighting Arctic cuisine.",
     "reviews": [],
 
     "photo": "/tour-images/tour-img07.jpg",
