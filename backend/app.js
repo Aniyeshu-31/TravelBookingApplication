@@ -16,7 +16,7 @@ const corsOption = {
   credentials: true,
 }
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://transcendent-sundae-2bb9db.netlify.app'], // Allow local dev and deployed frontend
+  origin: ['http://localhost:3000', 'https://transcendent-sundae-2bb9db.netlify.app','https://travel-booking-application-ten.vercel.app/'], // Allow local dev and deployed frontend
   credentials: true, // Allow cookies and credentials
 };
 // Allow frontend at localhost:3000
