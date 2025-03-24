@@ -1,0 +1,67 @@
+/* General Styles */
+.payment-cancelled-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Card Styling */
+.payment-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Icon Styling */
+.payment-icon {
+    color: #e63946;
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+/* Headings */
+.payment-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.payment-message {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Retry Button */
+.retry-button {
+    background-color: #e63946;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.retry-button:hover {
+    background-color: #c72c3c;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .payment-card {
+        width: 90%;
+        padding: 20px;
+    }
+}

@@ -112,7 +112,7 @@ const TourDetails = () => {
                     {city}
                   </span>
                   <span>
-                    <i class="ri-money-dollar-circle-line"></i> ${price} / per
+                    <i class="ri-money-dollar-circle-line"></i> ${price / 100} / per
                     person
                   </span>
                   <span>

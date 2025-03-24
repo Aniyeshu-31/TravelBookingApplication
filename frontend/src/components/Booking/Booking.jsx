@@ -24,42 +24,71 @@ const Booking = ({ tour, avgRating }) => {
   }
 
   const serviceFee = 10
-  const totalAmount =
-    Number(price) * Number(booking.guestSize) + Number(serviceFee)
+  const totalAmount = (booking.guestSize > 0) ? Number(price) * Number(booking.guestSize) + Number(serviceFee) : 0;
 
   //send data to the server
-  const handleClick = async (e) => {
-    e.preventDefault()
+   const handleClick = async (e) => {
+     e.preventDefault()
 
-    try {
-      if (!user || user === undefined || user === null) {
-        return alert('Please Sign In')
-      }
-      const res = await fetch("https://backend-travel-app.onrender.com/api/v1/booking", {
-        method: 'post',
-        headers: {
-          'content-type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify(booking),
-      })
-      const result = await res.json()
-      console.log(result)
-      if (!res.ok) {
-        console.log(result)
-      }
-      navigate('/thank-you')
-    } catch (err) {
-      alert(err.message)
-    }
-  }
+     if (!user) {
+       return alert('Please Sign In')
+     }
+
+     if (!booking.fullName || !booking.phone || !booking.bookAt) {
+       return alert('Please fill all fields before proceeding.')
+     }
+
+     try {
+       const stripe = await loadStripe(
+         'pk_test_51Mpme7SHEfH1Sdnx8ocZgzbXyKI8kFvC2pcFWk797xA6VdZGdr63hrzAGonltZUcKIpiMZ6oFyfsvDV6Ny7Yob0N00wFsGhGqF'
+       )
+
+       const body = {
+         bookingDetails: [{ ...booking, totalAmount }],
+       }
+
+       const res = await fetch(`${BASE_URL}/booking`, {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         credentials: 'include',
+         body: JSON.stringify(body),
+       })
+
+       if (!res.ok) {
+         const errorData = await res.json()
+         console.error('Backend Error:', errorData)
+         throw new Error(errorData.message || 'Stripe session creation failed.')
+       }
+
+       const session = await res.json()
+
+       if (!session.sessionId) {
+         throw new Error('Stripe session creation failed.')
+       }
+
+       const result = await stripe.redirectToCheckout({
+         sessionId: session.sessionId,
+       })
+
+       if (!result.error) {
+         navigate('/thank-you')
+       } else {
+         alert('Payment failed. Please try again.')
+         navigate('/retry-booking');
+       }
+     } catch (err) {
+       console.error('❌ Payment Error:', err.message)
+       alert(`Error: ${err.message}`)
+     }
+   }
+
 
   return (
     <div className="booking">
       <div className="booking__top d-flex align-items-center justify-content-between">
         <h3>
           {' '}
-          ${price} <span> /per person</span>
+          ${price / 100} <span> /per person</span>
         </h3>
         <span className="tour__rating d-flex align-items-center ">
           <i class="ri-star-s-fill"></i>
@@ -114,9 +143,9 @@ const Booking = ({ tour, avgRating }) => {
         <ListGroup>
           <ListGroupItem className="border-0 px-0">
             <h5 className="d-flex align-items-center gap-1">
-              ${price} <i class="ri-close-line"></i> 1 person
+              ${price / 100} <i class="ri-close-line"></i> 1 person
             </h5>
-            <span> ${price}</span>
+            <span> ${price / 100}</span>
           </ListGroupItem>
           <ListGroupItem className="border-0 px-0">
             <h5> Service charges </h5>
@@ -124,7 +153,7 @@ const Booking = ({ tour, avgRating }) => {
           </ListGroupItem>
           <ListGroupItem className="border-0 px-0 total">
             <h5>Total </h5>
-            <span> ${totalAmount}</span>
+            <span> ${totalAmount / 100}</span>
           </ListGroupItem>
         </ListGroup>
 
@@ -135,7 +164,7 @@ const Booking = ({ tour, avgRating }) => {
 
         <Button className="btn primary__btn w-100 mt-4" onClick={handleClick}>
           {' '}
-           Pay Now {totalAmount}
+          Pay Total ${(totalAmount == 0) ? "" : totalAmount / 100}
         </Button>
       </div>
     </div>

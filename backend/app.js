@@ -46,6 +46,6 @@ app.use('/api/v1/review', ReviewRoute)
 app.use('/api/v1/booking', BookingRoute)
 const port = process.env.PORT || 8000
 app.listen(port, () => {
-  connect()
+  connect();
   console.log(`Server is Listening on port ${port}`)
 })

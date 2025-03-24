@@ -4,14 +4,12 @@ import { Col } from "reactstrap";
 import useFetch from './../../hooks/useFetch.js'
 import {BASE_URL} from './../../utils/config';
 const FeaturedTourList = () => {
-
+  
   const {
     data: featuredTours,
     loading,
     error,
-  } = useFetch(
-    "https://backend-travel-app.onrender.com/api/v1/tours/search/getFeaturedTour"
-  ) 
+  } = useFetch(`${BASE_URL}/tours/search/getFeaturedTour`) 
   console.log(featuredTours);
   return (
     <>

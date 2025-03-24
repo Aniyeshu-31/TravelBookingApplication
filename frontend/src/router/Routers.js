@@ -10,6 +10,7 @@ import SearchResultList from './../pages/SearchResultList';
 import ThankYou from '../pages/ThankYou';
 import About from '../pages/About';
 import Contact from '../pages/Contact';
+import PaymentCancelled from '../components/Payment-Cancelled/Payment';
 const Routers = () => {
   return (
     <Routes>
@@ -23,6 +24,7 @@ const Routers = () => {
         <Route path='/about' element={<About />}/>
         <Route path='/tours/search' element={<SearchResultList />}/>
         <Route path='/contact' element={<Contact />}/>
+        <Route path='/retry-booking' element={<PaymentCancelled/>}/>
     </Routes>
   );
 };
