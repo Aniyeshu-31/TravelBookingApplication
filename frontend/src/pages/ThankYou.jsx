@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react'
-import { Container, Row, Col, Button } from 'reactstrap'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { BASE_URL } from '../utils/config'
-import '../styles/thank-you.css'
 
 const ThankYou = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     const verifyPayment = async () => {
-      const urlParams = new URLSearchParams(window.location.search)
+      const urlParams = new URLSearchParams(location.search)
       const sessionId = urlParams.get('session_id')
 
       if (!sessionId) {
@@ -24,7 +23,7 @@ const ThankYou = () => {
           body: JSON.stringify({ sessionId }),
         })
 
-        const data = await res.json()
+        const data = await res.json();
 
         if (data.success) {
           console.log('✅ Payment Verified, Booking Confirmed!')
@@ -36,29 +35,15 @@ const ThankYou = () => {
       }
     }
 
-   verifyPayment();
-  }, [])
+    verifyPayment()
+  }, [location.search])
 
   return (
-    <section>
-      <Container>
-        <Row>
-          <Col lg="12" className="pt-5 text-center">
-            <div className="thank__you">
-              <span>
-                <i className="ri-checkbox-circle-line"></i>
-              </span>
-              <h1 className="mb-3 fw-semibold">Thank You</h1>
-              <h3 className="mb-4">Your tour is booked.</h3>
-
-              <Button className="btn primary__btn w-25">
-                <Link to="/home"> Back to Home </Link>
-              </Button>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </section>
+    <div className="thank-you">
+      <h2>🎉 Thank You for Your Booking!</h2>
+      <p>Your payment has been processed successfully.</p>
+      <button onClick={() => navigate('/')}>Go to Home</button>
+    </div>
   )
 }
 

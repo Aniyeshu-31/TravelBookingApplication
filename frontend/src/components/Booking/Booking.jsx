@@ -64,6 +64,7 @@ const Booking = ({ tour, avgRating }) => {
 
        if (!session.sessionId) {
          throw new Error('Stripe session creation failed.')
+         navigate('/retry-booking');
        }
 
        const result = await stripe.redirectToCheckout({
@@ -74,6 +75,7 @@ const Booking = ({ tour, avgRating }) => {
          alert('Payment failed. Please try again.')
          navigate('/retry-booking');
        }
+       navigate(`/thank-you?session_id=${session.sessionId}`);
      } catch (err) {
        console.error('❌ Payment Error:', err.message)
        alert(`Error: ${err.message}`)
