@@ -23,7 +23,7 @@ export const createbooking = async (req, res) => {
         },
         unit_amount: booking.totalAmount, // Dollars
       },
-      guestSize: booking.guestSize,
+      quantity: booking.guestSize,
     }))
      console.log('🟢 Line Items:', lineItems)
     // ✅ Create a Stripe Checkout Session
