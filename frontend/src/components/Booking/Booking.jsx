@@ -74,7 +74,7 @@ const Booking = ({ tour, avgRating }) => {
          navigate('/thank-you')
        } else {
          alert('Payment failed. Please try again.')
-         navigate('/retry-booking');
+        //  navigate('/retry-booking');
        }
      } catch (err) {
        console.error('❌ Payment Error:', err.message)

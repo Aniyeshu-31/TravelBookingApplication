@@ -32,7 +32,7 @@ export const createbooking = async (req, res) => {
       line_items: lineItems,
       mode: 'payment',
       success_url: `${process.env.CLIENT_URL}/thank-you`,
-      cancel_url: `${process.env.CLIENT_URL}/payment-cancelled`,
+      cancel_url: `${process.env.CLIENT_URL}/retry-booking`,
     })
 
     return res.status(200).json({ success: true, sessionId: session.id })
