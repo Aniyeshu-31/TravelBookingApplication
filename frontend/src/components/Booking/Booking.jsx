@@ -15,16 +15,17 @@ const Booking = ({ tour, avgRating }) => {
     tourname: title,
     fullName: '',
     phone: '',
-    guestSize: 1,
+    guestSize: 0,
     bookAt: '',
   })
 
   const handleChange = (e) => {
     setBooking((prev) => ({ ...prev, [e.target.id]: e.target.value }))
   }
-
-  const serviceFee = 10
-  const totalAmount = (booking.guestSize > 0) ? Number(price) * Number(booking.guestSize) + Number(serviceFee) : 0;
+  const totalAmount =
+    booking.guestSize > 0
+      ? (Number(price) / 100) * Number(booking.guestSize) + 10
+      : 0
 
   //send data to the server
    const handleClick = async (e) => {
@@ -131,6 +132,7 @@ const Booking = ({ tour, avgRating }) => {
               placeholder="Guest"
               id="guestSize"
               required
+              value={booking.guestSize < 0 ? 0 : booking.guestSize}
               onChange={handleChange}
             />
           </FormGroup>
@@ -143,17 +145,17 @@ const Booking = ({ tour, avgRating }) => {
         <ListGroup>
           <ListGroupItem className="border-0 px-0">
             <h5 className="d-flex align-items-center gap-1">
-              ${price / 100} <i class="ri-close-line"></i> 1 person
+              ${price / 100} <i class="ri-close-line"></i> {booking.guestSize < 0 ? 0 : booking.guestSize} person
             </h5>
             <span> ${price / 100}</span>
           </ListGroupItem>
           <ListGroupItem className="border-0 px-0">
             <h5> Service charges </h5>
-            <span> ${serviceFee}</span>
+            <span> ${10}</span>
           </ListGroupItem>
           <ListGroupItem className="border-0 px-0 total">
             <h5>Total </h5>
-            <span> ${totalAmount / 100}</span>
+            <span> ${totalAmount.toFixed(2)}</span>
           </ListGroupItem>
         </ListGroup>
 
@@ -164,7 +166,7 @@ const Booking = ({ tour, avgRating }) => {
 
         <Button className="btn primary__btn w-100 mt-4" onClick={handleClick}>
           {' '}
-          Pay Total ${(totalAmount == 0) ? "" : totalAmount / 100}
+          Pay Total ${totalAmount == 0 ? 0 : totalAmount.toFixed(2)}
         </Button>
       </div>
     </div>
