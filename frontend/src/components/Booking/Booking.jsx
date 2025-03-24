@@ -44,7 +44,7 @@ const Booking = ({ tour, avgRating }) => {
        )
 
        const body = {
-         bookingDetails: [{ ...booking, totalAmount }],
+         bookingDetails: [{ ...booking, price }],
        }
 
        const res = await fetch(`${BASE_URL}/booking`, {
@@ -70,11 +70,9 @@ const Booking = ({ tour, avgRating }) => {
          sessionId: session.sessionId,
        })
 
-       if (!result.error) {
-         navigate('/thank-you')
-       } else {
+       if (result.error) {
          alert('Payment failed. Please try again.')
-        //  navigate('/retry-booking');
+         navigate('/retry-booking');
        }
      } catch (err) {
        console.error('❌ Payment Error:', err.message)
