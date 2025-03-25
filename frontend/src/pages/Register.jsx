@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, FormGroup, Button } from "reactstrap";
 import { Link } from "react-router-dom";
@@ -19,9 +19,9 @@ const Register = () => {
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
-useEffect(() => {
-  window.scroll(0, 0)
-}, [])
+  useEffect(() => { 
+    window.scroll(0, 0)
+  }, [])  
   const handleClick = async (e) => {
     e.preventDefault();
     try {

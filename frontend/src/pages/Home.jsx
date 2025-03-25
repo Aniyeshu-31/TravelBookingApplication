@@ -8,7 +8,7 @@ import heroVideo from "../assets/images/hero-video.mp4";
 import worldImg from "../assets/images/world.png";
 import experienceImg from "../assets/images/experience.png";
 import Subtitle from "../shared/Subtitle";
-
+import { useEffect } from "react";
 import SearchBar from "../shared/SearchBar";
 import ServiceList from "../services/ServiceList";
 import FeaturedTourList from "../components/Featured-tours/FeaturedTourList";
