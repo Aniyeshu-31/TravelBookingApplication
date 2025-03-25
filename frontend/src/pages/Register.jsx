@@ -19,7 +19,9 @@ const Register = () => {
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
-
+useEffect(() => {
+  window.scroll(0, 0)
+}, [])
   const handleClick = async (e) => {
     e.preventDefault();
     try {

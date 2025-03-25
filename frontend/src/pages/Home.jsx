@@ -17,6 +17,9 @@ import Testimonials from "../components/Testimonial/Testimonials";
 import Newsletter from "../shared/Newsletter";
 
 const Home = () => {
+  useEffect(() => {
+    window.scroll(0, 0)
+  }, [])
   return (
     <>
       {/* ========= hero content start =================== */}

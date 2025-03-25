@@ -6,7 +6,9 @@ import "../styles/about.css";
 import { AuthContext } from "../context/AuthContext";
 
 const About = () => {
-
+     useEffect(() => {
+       window.scroll(0, 0)
+     }, [])
     return (
         <>
           <CommonSection title={"About Us"} />

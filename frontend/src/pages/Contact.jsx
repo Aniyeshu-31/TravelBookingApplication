@@ -6,7 +6,9 @@ import "../styles/contact.css";
 import { AuthContext } from "../context/AuthContext";
 
 const Contact = () => {
-
+    useEffect(() => {
+      window.scroll(0, 0)
+    }, [])
     return (
       <>
         <CommonSection title={'Contact Us'} />
