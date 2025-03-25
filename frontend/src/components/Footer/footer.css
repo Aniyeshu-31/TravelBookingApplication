@@ -86,7 +86,7 @@
 /* Responsive Styles */
 @media (max-width: 768px) {
   .footer {
-    width: 100%;
+    width: 105%;
     left: 0;
     text-align: center;
   }
