@@ -2,16 +2,15 @@ import React from 'react'
 import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/images/logo.png'
-
 import './footer.css'
 
-const quick__links = [
+const quickLinks1 = [
   { path: '/home', display: 'Home' },
   { path: '/about', display: 'About' },
   { path: '/tours', display: 'Tours' },
 ]
 
-const quick__links2 = [ 
+const quickLinks2 = [
   { path: '/login', display: 'Login' },
   { path: '/register', display: 'Register' },
 ]
@@ -22,107 +21,88 @@ const Footer = () => {
   return (
     <footer className="footer">
       <Container>
-        <Row>
-          {/* Logo Section */}
-          <Col lg="3">
-            <div className="logo">
-              {/* <img src={logo} alt="Logo" /> */}
+        <Row className="footer__row">
+          {/* Logo & About Section */}
+          <Col lg="3" md="6">
+            <div className="footer__about">
+              {/* <img src={logo} alt="Logo" className="footer-logo" /> */}
               <p>
                 Discover the world with BookEase. We offer personalized travel
-                experiences that cater to your every need. Whether you're
-                looking for adventure, relaxation, or culture, our expert team
-                of travel planners will help you create unforgettable memories.
+                experiences that cater to your every need.
               </p>
-              <div className="social__links d-flex align-items-center gap-4">
-                <span>
-                  <Link to="#">
-                    <i className="ri-youtube-line"></i>
-                  </Link>
-                </span>
-                <span>
-                  <Link to="#">
-                    <i className="ri-github-fill"></i>
-                  </Link>
-                </span>
-                <span>
-                  <Link to="#">
-                    <i className="ri-facebook-circle-line"></i>
-                  </Link>
-                </span>
-                <span>
-                  <Link to="#">
-                    <i className="ri-twitter-line"></i>
-                  </Link>
-                </span>
+              <div className="social__links">
+                <Link to="#">
+                  <i className="ri-youtube-line"></i>
+                </Link>
+                <Link to="#">
+                  <i className="ri-github-fill"></i>
+                </Link>
+                <Link to="#">
+                  <i className="ri-facebook-circle-line"></i>
+                </Link>
+                <Link to="#">
+                  <i className="ri-twitter-line"></i>
+                </Link>
               </div>
             </div>
           </Col>
 
           {/* Discover Section */}
-          <Col lg="3">
-            <h5 className="footer__link-title">Discover</h5>
-            <ListGroup className="footer__quick-links">
-              {quick__links.map((item, index) => (
-                <ListGroupItem key={index} className="ps-0 border-0">
-                  <Link to={item.path}>{item.display}</Link>
+          <Col lg="3" md="6">
+            <h5 className="footer__title">Discover</h5>
+            <ListGroup className="footer__links">
+              {quickLinks1.map((item, index) => (
+                <ListGroupItem key={index} className="border-4">
+                  <Link to={item.path}>{<b>{item.display}</b>}</Link>
                 </ListGroupItem>
               ))}
             </ListGroup>
           </Col>
 
           {/* Quick Links Section */}
-          <Col lg="3">
-            <h5 className="footer__link-title">Quick Links</h5>
-            <ListGroup className="footer__quick-links">
-              {quick__links2.map((item, index) => (
-                <ListGroupItem key={index} className="ps-0 border-0">
-                  <Link to={item.path}>{item.display}</Link>
+          <Col lg="3" md="6">
+            <h5 className="footer__title">Quick Links</h5>
+            <ListGroup className="footer__links">
+              {quickLinks2.map((item, index) => (
+                <ListGroupItem key={index} className="border-0">
+                  <Link to={item.path}>{<b>{item.display}</b>}</Link>
                 </ListGroupItem>
               ))}
             </ListGroup>
           </Col>
 
           {/* Contact Section */}
-          <Col lg="3">
-            <h5 className="footer__link-title">Contact</h5>
-            <ListGroup className="footer__quick-links contact-info">
-              <ListGroupItem className="ps-0 border-0 d-flex align-items-center">
-                <div className="contact-icon">
-                  <i className="ri-map-pin-line"></i>
-                </div>
-                <div className="contact-text">
-                  <span>Address: Delhi , India</span>
-                  <p></p>
-                </div>
-              </ListGroupItem>
-
-              <ListGroupItem className="ps-0 border-0 d-flex align-items-center">
-                <div className="contact-icon">
-                  <i className="ri-mail-line"></i>
-                </div>
-                <div className="contact-text">
-                  <span>Email: aniyeshuverma31@gmail.com</span>
-                  <p></p>
-                </div>
-              </ListGroupItem>
-
-              <ListGroupItem className="ps-0 border-0 d-flex align-items-center">
-                <div className="contact-icon">
-                  <i className="ri-phone-fill"></i>
-                </div>
-                <div className="contact-text">
-                  <span>Phone: +91 6394615848</span>
-                  <p></p>
-                </div>
-              </ListGroupItem>
-            </ListGroup>
+          <Col lg="3" md="6">
+            <h5 className="footer__title">Contact</h5>
+            <ul className="footer__contact">
+              <li>
+                <i className="ri-map-pin-line"></i> Delhi, India
+              </li>
+              <li>
+                <i className="ri-mail-line"></i> aniyeshuverma31@gmail.com
+              </li>
+              <li>
+                <i className="ri-phone-fill"></i> +91 6394615848
+              </li>
+            </ul>
           </Col>
+        </Row>
 
-          {/* Copyright */}
-          <Col lg="12" className="text-center pt-5">
+        {/* Copyright Section */}
+        <Row>
+          <Col lg="12" className="text-center pt-4">
+            <hr className="footer_divider" />
             <p className="copyright">
-              Copyright {year}, designed and developed by Aniyeshu Verma. All
+              &copy; {year}, Designed & Developed by <b>Aniyeshu Verma</b>. All
               rights reserved.
+            </p>
+            <p className="copyright_mobile" style={{ textAlign: 'center' }}>
+              &copy; {year}, Designed & Developed <br />
+              <span>
+                by <b>Aniyeshu Verma</b>.
+              </span>
+              <br />
+              All rights reserved.
             </p>
           </Col>
         </Row>

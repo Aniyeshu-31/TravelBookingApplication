@@ -1,168 +1,110 @@
 .footer {
-  padding: 50px 20px 20px;
-  text-align: center;
+  width: 100%;
+  background-color: rgb(16, 36, 41);
+  color: rgb(247, 240, 240);
+  padding: 40px 0;
 }
-
-.footer__content {
+.footer__row {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
-/* Logo Section */
-.footer .logo img {
-  width: 40%;
-  max-width: 150px;
-  margin-bottom: 0.8rem;
+.footer__about p {
+  font-size: 14px;
+  margin-bottom: 15px;
 }
 
-.footer .logo p {
-  color: var(--text-color);
-  font-size: 0.9rem;
-}
-
-/* Contact Section */
-.contact-info {
-  display: grid;
-  grid-template-columns: auto 1fr; /* Icon + Label | Content */
-  gap: 10px 15px; /* Row gap: 10px, Column gap: 15px */
-  align-items: center;
-  text-align: left; /* Align text properly */
-  max-width: 300px; /* Adjust width for readability */
-  margin: 0 auto; /* Center align */
-}
-
-.contact-info div {
-  display: contents; /* Ensures grid handles positioning */
-}
-
-.contact-info div span {
+.footer__title {
+  font-size: 18px;
+  margin-bottom: 15px;
   font-weight: bold;
-  white-space: nowrap; /* Prevents text from wrapping */
+  color: #f8b400;
 }
 
-.contact-info div p {
-  margin: 0;
-  color: var(--text-color);
-  font-size: 1rem;
-}
-
-/* Footer Quick Links */
-.footer__quick-links {
-  text-align: center;
-}
-
-.footer__quick-links ul {
+.footer__links,
+.footer__contact {
   list-style: none;
   padding: 0;
 }
 
-.footer__quick-links li {
-  margin-bottom: 10px;
+.footer__links li,
+.footer__contact li {
+  margin-bottom: 8px;
 }
 
-.footer__quick-links li a {
+.footer__links a {
+  color: rgb(0, 0, 0);
   text-decoration: none;
-  color: var(--text-color);
-  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
-/* Social Links */
+.footer__links a:hover {
+  color: #f8b400;
+}
+
+.footer__contact li {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+.copyright_mobile{
+  display: none;
+}
+.footer__contact i {
+  margin-right: 8px;
+  font-size: 18px;
+  color: #f8b400;
+}
+
 .social__links {
   display: flex;
-  justify-content: center;
   gap: 15px;
   margin-top: 10px;
 }
 
-.social__links span a {
-  text-decoration: none;
-  color: var(--heading-color);
-  font-size: 1rem;
+.social__links a {
+  font-size: 22px;
+  color: #ddd;
+  transition: color 0.3s ease;
 }
 
-/* Copyright */
+.social__links a:hover {
+  color: #f8b400;
+}
+.footer_divider{
+   color: white;
+   margin-top: 1rem;
+}
 .copyright {
-  text-align: center;
-  font-size: 14px;
-  color: #777;
-  margin-top: 20px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  gap:3px;
+  font-size: 14px;
+  margin-top: 50px;
 }
-
-/* Mobile Adjustments */
+/* Responsive Styles */
 @media (max-width: 768px) {
-  .footer .logo p {
-    text-align: justify; /* Justifies text for better readability */
-    width: 100%; /* Ensures paragraph uses full available width */
-    max-width: 250px; /* Adjust based on your design needs */
-    margin: 0 auto; /* Centers the paragraph if needed */
-    line-height: 1.5; /* Improves readability */
-  }
-
-  .footer .logo {
-    display: flex;
-    flex-direction: column;
-    align-items: start; /* Ensures content aligns properly */
-  }
-  .footer__content {
-    flex-direction: column;
-    align-items: center;
+  .footer {
+    width: 100%;
+    left: 0;
     text-align: center;
   }
-  .contact-icon {
-    margin-bottom: 2.2rem;
+  
+  .footer__about,
+  .footer__title,
+  .footer__links,
+  .footer__contact {
+    margin-bottom: 20px;
   }
-  .contact-info {
-    grid-template-columns: 1fr; /* Stack content on mobile */
+  .copyright{
+     display: none;
+  }
+  .copyright_mobile{
+    display: block;
     text-align: center;
   }
-
-  .contact-info div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .contact-info div span {
-    margin-bottom: 5px;
-  }
-  .footer .social__links {
-    margin: auto;
-    display: flex;
-    justify-content: center; /* Centers the icons */
-    align-items: center;
-    gap: 15px; /* Adds spacing between icons */
-    margin-top: 15px; /* Adjust margin for better spacing */
-  }
-
-  .footer .social__links span {
-    display: flex;
-    align-items: center;
+  .social__links {
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #f4f4f4;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .footer .social__links span:hover {
-    background-color: #007bff;
-  }
-
-  .footer .social__links i {
-    font-size: 20px;
-    color: #333;
-  }
-
-  .footer .social__links span:hover i {
-    color: white;
   }
 }
