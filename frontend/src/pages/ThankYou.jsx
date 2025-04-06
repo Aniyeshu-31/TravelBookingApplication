@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import '../styles/thank-you.css'
-
+import { useEffect } from 'react'
 const ThankYou = () => {
     useEffect(() => {
       window.scroll(0, 0)
