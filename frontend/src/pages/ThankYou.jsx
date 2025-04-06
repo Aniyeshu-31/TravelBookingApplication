@@ -2,6 +2,10 @@ import { useNavigate } from 'react-router-dom'
 import '../styles/thank-you.css'
 
 const ThankYou = () => {
+    useEffect(() => {
+      window.scroll(0, 0)
+    }, [])
+  
   const navigate = useNavigate()
 
   return (
