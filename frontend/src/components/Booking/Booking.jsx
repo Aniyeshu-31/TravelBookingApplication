@@ -67,9 +67,9 @@ const Booking = ({ tour, avgRating }) => {
       }
      
       console.log('Server response:', data)
-      if (!res.ok) {
-        throw new Error(data.message || 'Booking request failed')
-      }
+      // if (!res.ok) {
+      //   throw new Error(data.message || 'Booking request failed')
+      // }
 
   
       const options = {
