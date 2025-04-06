@@ -26,14 +26,14 @@ const Login = () => {
     e.preventDefault();
     dispatch({type:'LOGIN_START'});
     try {
-      const res = await fetch(`${BASE_URL}/auth/login`,{
-        method:'post',
-        headers:{
-          'content-type':'application/json',
-        },
-        credentials:'include',
-        body:JSON.stringify(credentials)
-      });
+    const res = await fetch(`${BASE_URL}/auth/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(credentials),
+    })
       const result = await res.json();
       if(!res.ok)alert(result.message);
 
