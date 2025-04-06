@@ -40,7 +40,9 @@ export const LoginUser = async(req,res,next)=>{
        res
          .cookie('accessToken', token, {
            httpOnly: true,
-           expiresIn: token.expiresIn,
+           Secure: true,
+           SameSite: "None",
+           maxAge: 15 * 24 * 60 * 60 * 1000,
          })
          .status(200)
          .json({
