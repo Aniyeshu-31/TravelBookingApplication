@@ -23,7 +23,7 @@ export const LoginUser = async(req,res,next)=>{
         const email = req.body.email;
        const user = await User.findOne({email});
        if(!user){
-        res.status(404).json({success:false ,message:'User not Found!!'});
+        return res.status(404).json({success:false ,message:'User not Found!!'});
        }
        const checkpassword = await bcrypt.compare(req.body.password,user.password);
 
@@ -37,10 +37,17 @@ export const LoginUser = async(req,res,next)=>{
 
        // set token in browser cookies and send it to the client in the response
 
-       res.cookie('accessToken',token,{
-        httpOnly:true,
-        expiresIn:token.expiresIn
-       }).status(200).json({success:true,message:'LoggedIn Successfully!!' ,data:{...rest}});
+       res
+         .cookie('accessToken', token, {
+           httpOnly: true,
+           expiresIn: token.expiresIn,
+         })
+         .status(200)
+         .json({
+           success: true,
+           message: 'LoggedIn Successfully!!',
+           data: { ...rest},
+         })
     } catch (err) {
         console.log(err);
         return res.status(401).json({success:false,message:'Failed To Login'});

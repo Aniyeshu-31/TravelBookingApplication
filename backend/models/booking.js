@@ -4,16 +4,16 @@ const bookingSchema = new mongoose.Schema(
   {
     userId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User', // Assuming you have a User model
+      ref: 'User',
       required: true,
     },
     userEmail: {
       type: String,
-      
+      required: true,
     },
     tourName: {
       type: String,
-      
+      required: true,
     },
     fullName: {
       type: String,
@@ -24,24 +24,33 @@ const bookingSchema = new mongoose.Schema(
       required: true,
     },
     phone: {
-      type: String, // Changed from Number to String for flexibility
+      type: String,
       required: true,
     },
     bookAt: {
       type: Date,
+      default: Date.now,
+    },
+    totalAmount: {
+      type: Number,
       required: true,
     },
-    totalAmount:{
-      type: Number
-    },
-    sessionId: {
-      type: String, // To store Stripe session ID
+    orderId: {
+      type: String, 
       required: true,
       unique: true,
     },
-    status:{
-      type:String,
-    }
+    paymentId: {
+      type: String,
+    },
+    paymentSignature: {
+      type: String, 
+    },
+    status: {
+      type: String,
+      enum: ['pending', 'confirmed', 'failed'],
+      default: 'pending',
+    },
   },
   { timestamps: true }
 )

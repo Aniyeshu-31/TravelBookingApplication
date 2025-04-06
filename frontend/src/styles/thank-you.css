@@ -1,9 +1,63 @@
-.thank__you span i {
-    font-size: 4rem;
-    color: green;
+.thankyou-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e0f7fa, #ede7f6);
+  padding: 20px;
 }
 
-.thank__you h1 {
-    font-size: 3.6rem;
-    font-family: var(--subtitle-font-name);
+.thankyou-card {
+  background-color: white;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.check-icon {
+  font-size: 48px;
+  color: green;
+  margin-bottom: 15px;
+}
+
+.thankyou-card h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.thankyou-card p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.thankyou-card button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #6a1b9a;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.thankyou-card button:hover {
+  background-color: #4a148c;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

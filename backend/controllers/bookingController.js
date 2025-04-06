@@ -1,111 +1,115 @@
-import Stripe from 'stripe'
 import Booking from '../models/booking.js' // Ensure this path is correct
 import dotenv from 'dotenv'
-
+import crypto, { sign } from 'crypto'
+import Razorpay from 'razorpay'
+import { nanoid } from 'nanoid'
 dotenv.config()
-
-// ✅ Use the correct Stripe key from .env
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
-console.log('Stripe Secret Key:', process.env.STRIPE_SECRET_KEY)
-
-export const createbooking = async (req, res) => {
+export const createBookingOrder = async (req, res) => {
   try {
-    const { bookingDetails } = req.body
-
-    if (!bookingDetails || bookingDetails.length === 0) {
-      return res
-        .status(400)
-        .json({ success: false, message: 'No booking details provided' })
+    const { totalAmount } = req.body
+    console.log(totalAmount)
+    if (!totalAmount || isNaN(totalAmount)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid totalAmount provided!',
+      })
     }
 
-    // ✅ Construct Line Items for Stripe Checkout
-    const lineItems = bookingDetails.map((booking) => ({
-      price_data: {
-        currency: 'usd',
-        product_data: { name: booking.tourname },
-        unit_amount: Math.round(booking.price), // Convert to cents
-      },
-      quantity: booking.guestSize,
-    }))
+    const keyId = process.env.RZP_PAY_ID
+    const keySecret = process.env.RZP_KEY_SECRET
 
-    // ✅ Create a Stripe Checkout Session
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: lineItems,
-      mode: 'payment',
-      success_url:`${process.env.CLIENT_URL}/thank-you`,
-      cancel_url: `${process.env.CLIENT_URL}/retry-booking`,
+    if (!keyId || !keySecret) {
+      console.error(
+        '❌ Razorpay credentials are missing in environment variables'
+      )
+      return res.status(500).json({
+        success: false,
+        message: 'Server configuration error: Razorpay credentials not set',
+      })
+    }
+    const instance = new Razorpay({
+      key_id: keyId,
+      key_secret: keySecret,
     })
 
-        if (!session || !session.id) {
-          throw new Error('Failed to create Stripe session')
-        }
-    
-    // ✅ Save the Booking with the Stripe Session ID
+    const options = {
+      amount: Math.round(totalAmount * 100),
+      currency: 'INR',
+      receipt: `rcpt_${nanoid(12)}`,
+    }
 
+    const order = await instance.orders.create(options)
 
-    return res.status(200).json({ success: true, sessionId: session.id })
+    if (!order) {
+      return res.status(500).json({
+        success: false,
+        message: 'Failed to create order',
+      })
+    }
+    console.log(order)
+    return res.status(200).json({
+      success: true,
+      message: 'Order created successfully',
+      data: order,
+    })
   } catch (err) {
-    console.error('❌ Stripe Session Error:', err.message)
-    res.status(500).json({
+    console.error('🔥 createBookingOrder ERROR:', err)
+
+    return res.status(500).json({
       success: false,
-      message: 'Stripe session creation failed',
-      error: err.message,
+      message: 'Order creation failed',
+      error: err.message || err,
     })
   }
 }
 
 export const confirmBooking = async (req, res) => {
   try {
-    const { sessionId } = req.body // ✅ Get sessionId from req.body
+    const { orderId, paymentId, signature, bookingDetails} = req.body
 
-    if (!sessionId) {
+    if (!paymentId || !signature) {
       return res
         .status(400)
-        .json({ success: false, message: 'Session ID is required' })
+        .json({ success: false, message: 'Missing payment details' })
     }
+    console.log(bookingDetails.AmountToPay);
+    // 🔐 Verify Signature
+    const hmac = crypto.createHmac('sha256', process.env.RZP_KEY_SECRET)
+    hmac.update(`${orderId}|${paymentId}`)
+    const generatedSignature = hmac.digest('hex')
 
-    // ✅ Find and update the booking status
-    // const updatedBooking = await Booking.findOneAndUpdate(
-    //   { stripeSessionId: sessionId },
-    //   { status: 'confirmed' },
-    //   { new: true }
-    // )
-         const newBooking = new Booking({
-           userId: bookingDetails[0].userId,
-           userEmail: bookingDetails[0].userEmail,
-           tourname: bookingDetails[0].tourname,
-           fullName: bookingDetails[0].fullName,
-           phone: bookingDetails[0].phone,
-           guestSize: bookingDetails[0].guestSize,
-           totalAmount: bookingDetails[0].price,
-           bookAt: bookingDetails[0].bookAt || new Date(),
-           sessionId: sessionId,
-           status: 'confirmed', // Mark as confirmed when payment is confirmed
-         })
-
-         await newBooking.save()
-    // if (!updatedBooking) {
-    //   return res
-    //     .status(404)
-    //     .json({ success: false, message: 'Booking not found' })
-    // }
-
-    return res.status(200).json({
-      success: true,
-      message: 'Booking confirmed',
-      data: newBooking,
+    if (generatedSignature !== signature) {
+      return res
+        .status(400)
+        .json({ success: false, message: 'Invalid signature' })
+    }
+  console.log('📦 bookingDetails:', bookingDetails)
+    const booking = new Booking({
+      userId: bookingDetails.userId,
+      userEmail: bookingDetails.userEmail,
+      tourName: bookingDetails.tourName, 
+      fullName: bookingDetails.fullName,
+      phone: bookingDetails.phone,
+      guestSize: bookingDetails.guestSize,
+      totalAmount: bookingDetails.AmountToPay,
+      bookAt: bookingDetails.bookAt || new Date(),
+      razorpayPaymentId: paymentId,
+      orderId: orderId,
+      status: 'confirmed',
     })
+
+    await booking.save()
+
+    res
+      .status(200)
+      .json({ success: true, message: 'Booking confirmed', data: booking })
   } catch (err) {
     console.error('❌ Booking Confirmation Error:', err.message)
-    res.status(500).json({
-      success: false,
-      message: 'Error confirming booking',
-      error: err.message,
-    })
+    res
+      .status(500)
+      .json({ success: false, message: 'Booking confirmation failed' })
   }
 }
-
 export const getBookingDetails = async (req, res) => {
   const id = req.params.id
   try {
@@ -113,7 +117,7 @@ export const getBookingDetails = async (req, res) => {
     if (!book) {
       return res
         .status(404)
-        .json({ success: false, message: 'Booking not found!' })
+        .json({ success: false, message: 'Booking not Found!' })
     }
     res.status(200).json({
       success: true,
