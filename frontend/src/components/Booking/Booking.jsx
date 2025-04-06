@@ -105,9 +105,6 @@ const Booking = ({ tour, avgRating }) => {
                 verifyData.message || 'Payment verification failed'
               )
             }
-
-            alert('Booking successful!')
-         
             setTimeout(() => {
               navigate('/thank-you')
             },500)
