@@ -25,13 +25,14 @@ const Register = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`${BASE_URL}/auth/register`,{
-        method:'post',
-        headers:{
-          'content-type':'application/json'
+      const res = await fetch(`${BASE_URL}/auth/register`, {
+        method: 'post',
+        headers: {
+          'content-type': 'application/json',
+           credentials: true,
         },
-        body:JSON.stringify(credentials)
-      });
+        body: JSON.stringify(credentials),
+      })
       const result = await res.json();
 
       if(!res.ok){
