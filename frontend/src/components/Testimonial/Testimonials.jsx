@@ -44,9 +44,9 @@ const Testimonials = () => {
         </p>
 
         <div className="d-flex align-items-center gap-4 mt-3">
-          <img src={ava01} className="w-25 h-25 rounded-2" alt="" />
+          <img src={ava01} className="w-0 h-10 rounded-2" alt="" />
           <div>
-            <h6 className="mb-0 mt-3"> Aniyeshu Verma</h6>
+            <h6 className="mb-0 mt-2"> Aniyeshu Verma</h6>
             <p> Customer </p>
           </div>
         </div>
@@ -57,7 +57,7 @@ const Testimonials = () => {
         </p>
 
         <div className="d-flex align-items-center gap-4 mt-3">
-          <img src={ava04} className="w-25 h-25 rounded-2" alt="" />
+          <img src={ava04} className="w-15 h-15 rounded-2" alt="" />
           <div>
             <h6 className="mb-0 mt-3"> Abhishek Pathak</h6>
             <p> Customer </p>
