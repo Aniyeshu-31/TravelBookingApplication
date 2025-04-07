@@ -43,7 +43,7 @@ const Testimonials = () => {
         Good trip to Ooty with Bookease. Everything was taken care of. Beautiful hill station and fun activities. Friendly staff. I will suggest to always plan your trips with them.
         </p>
 
-        <div className="d-flex align-items-center gap-4 mt-3">
+        <div className="d-flex align-items-center gap-4 mt-4">
           <img src={ava01} className="w-25 h-25 rounded-2" alt="" />
           <div>
             <h6 className="mb-0 mt-2"> Aniyeshu Verma</h6>
