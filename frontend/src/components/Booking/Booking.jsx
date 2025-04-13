@@ -1,4 +1,4 @@
-import React, { useState, useContext ,useEffect} from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import './booking.css'
 import { Form, FormGroup, ListGroup, ListGroupItem, Button } from 'reactstrap'
 import { AuthContext } from '../../context/AuthContext'
@@ -20,8 +20,9 @@ const Booking = ({ tour, avgRating }) => {
     fullName: '',
     guestSize: '',
     phone: '',
-    bookAt: '',
-    totalAmount: '', 
+    startAt: '',
+    endAt: '',
+    totalAmount: '',
   })
   const totalAmount =
     booking.guestSize > 0 ? Number(price) * Number(booking.guestSize) + 100 : 0
@@ -29,7 +30,7 @@ const Booking = ({ tour, avgRating }) => {
   const handleChange = (e) => {
     setBooking((prev) => ({ ...prev, [e.target.id]: e.target.value }))
   }
-  
+
   const handleClick = async (e) => {
     e.preventDefault()
 
@@ -37,7 +38,7 @@ const Booking = ({ tour, avgRating }) => {
       return alert('Please Sign In')
     }
 
-    if (!booking.fullName || !booking.phone || !booking.bookAt) {
+    if (!booking.fullName || !booking.phone || !booking.startAt || !booking.endAt) {
       return alert('Please fill all fields before proceeding.')
     }
     const calculatedAmount =
@@ -53,7 +54,7 @@ const Booking = ({ tour, avgRating }) => {
         },
         body: JSON.stringify({
           ...booking,
-          totalAmount: (calculatedAmount),
+          totalAmount: calculatedAmount,
         }),
       })
 
@@ -65,13 +66,12 @@ const Booking = ({ tour, avgRating }) => {
         console.error('Invalid JSON response:', text)
         throw new Error('Server returned invalid JSON')
       }
-     
+
       console.log('Server response:', data)
       if (!res.ok) {
         throw new Error(data.message || 'Booking request failed')
       }
 
-  
       const options = {
         key: RAZORPAY_KEY_ID,
         amount: data.data.amount,
@@ -79,27 +79,28 @@ const Booking = ({ tour, avgRating }) => {
         name: booking.tourName,
         description: 'Tour Reservation Payment',
         order_id: data.data.id,
-        handler: async function(response) {
-            console.log(response);
-            try {
-              const verifyRes = await fetch(`${BASE_URL}/booking/verify`, {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
+        handler: async function (response) {
+          console.log(response)
+          try {
+            const verifyRes = await fetch(`${BASE_URL}/booking/verify`, {
+              method: 'POST',
+              credentials:'include',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                orderId: response.razorpay_order_id,
+                paymentId: response.razorpay_payment_id,
+                signature: response.razorpay_signature,
+                bookingDetails: {
+                  ...booking,
+                  AmountToPay: Number(calculatedAmount),
                 },
-                body: JSON.stringify({
-                  orderId: response.razorpay_order_id,
-                  paymentId: response.razorpay_payment_id,
-                  signature: response.razorpay_signature,
-                  bookingDetails: {
-                      ...booking,
-                      AmountToPay: Number(calculatedAmount),
-                    },
-                }),
-              })
+              }),
+            })
 
             const verifyData = await verifyRes.json()
-            console.log(verifyData.message);
+            console.log(verifyData.message)
             if (!verifyRes.ok) {
               throw new Error(
                 verifyData.message || 'Payment verification failed'
@@ -107,7 +108,7 @@ const Booking = ({ tour, avgRating }) => {
             }
             setTimeout(() => {
               navigate('/thank-you')
-            },500)
+            }, 500)
           } catch (err) {
             console.error('Verification Error:', err)
             alert('Payment succeeded but could not verify booking.')
@@ -129,7 +130,7 @@ const Booking = ({ tour, avgRating }) => {
         console.error('Payment Failed:', response.error)
         alert('Payment failed. Please try again.')
         navigate('/retry-booking')
-        return;
+        return
       })
     } catch (error) {
       console.error('Booking Error:', error)
@@ -172,14 +173,24 @@ const Booking = ({ tour, avgRating }) => {
               onChange={handleChange}
             />
           </FormGroup>
-          <FormGroup className="d-flex align-items-center gap-3">
+          <FormGroup className="d-flex align-items-center gap-1">
             <input
               type="date"
               placeholder=""
-              id="bookAt"
+              id="startAt"
               required
               onChange={handleChange}
             />
+            <span style={{ fontWeight: 'bold' }}>to</span>
+            <input
+              type="date"
+              placeholder=""
+              id="endAt"
+              required
+              onChange={handleChange}
+            />
+          </FormGroup>
+          <FormGroup>
             <input
               type="number"
               placeholder="Guest"

@@ -5,6 +5,7 @@ import Razorpay from 'razorpay'
 import { nanoid } from 'nanoid'
 dotenv.config()
 export const createBookingOrder = async (req, res) => {
+  console.log(req.cookies.accessToken);
   try {
     const { totalAmount } = req.body
     console.log(totalAmount)
@@ -92,7 +93,8 @@ export const confirmBooking = async (req, res) => {
       phone: bookingDetails.phone,
       guestSize: bookingDetails.guestSize,
       totalAmount: bookingDetails.AmountToPay,
-      bookAt: bookingDetails.bookAt || new Date(),
+      startAt: bookingDetails.startAt || new Date(),
+      endAt:bookingDetails.endAt || new Date(),
       razorpayPaymentId: paymentId,
       orderId: orderId,
       status: 'confirmed',
@@ -131,17 +133,26 @@ export const getBookingDetails = async (req, res) => {
     })
   }
 }
-
+export const getUserBooking = async (req,res)=>{
+  try {
+    const bookings = await Booking.find({ userId: req.user.id }).sort({
+      startDate: 1,
+    })
+    res.json(bookings)
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' })
+  }
+}
 export const getAllBookingDetails = async (req, res) => {
   try {
-    const bookings = await Booking.find()
-    res.status(200).json({
+    const bookings = await Booking.find({ userId: req.user.id }).sort({startDate:1})
+    return res.status(200).json({
       success: true,
       message: 'All Bookings Fetched Successfully!!',
       data: bookings,
     })
   } catch (err) {
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: 'Internal Server Error!',
     })

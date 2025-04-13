@@ -28,10 +28,10 @@ const Login = () => {
     try {
     const res = await fetch(`${BASE_URL}/auth/login`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
-      credentials: 'include',
       body: JSON.stringify(credentials),
     })
       const result = await res.json();
