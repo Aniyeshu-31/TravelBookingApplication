@@ -122,7 +122,7 @@
 
 @media only screen and (max-width:992px){
     .hero__mobile{
-        margin-left: 14px;
+        margin-left: 0px;
     }
     .hero__content h1{
         font-size:2.5rem;
