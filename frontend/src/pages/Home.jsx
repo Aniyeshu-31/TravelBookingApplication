@@ -76,7 +76,7 @@ const Home = () => {
       <section>
         <Container>
           <Row>
-            <Col lg="3">
+            <Col lg="3" className="hero__mobile">
               <Subtitle subtitle={'What we serve'} />
               <h2 className="services__title">We offer our best services</h2>
             </Col>

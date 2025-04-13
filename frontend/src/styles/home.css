@@ -51,7 +51,6 @@
     color: #ee6e6e;
     font-family: var(--subtitle-font-name);
 }
-
 .services__title {
     font-size: 2.5rem;
     font-weight: 500;
@@ -122,6 +121,9 @@
 }
 
 @media only screen and (max-width:992px){
+    .hero__mobile{
+        margin-left: 14px;
+    }
     .hero__content h1{
         font-size:2.5rem;
     }
