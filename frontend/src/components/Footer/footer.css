@@ -86,7 +86,7 @@
 /* Responsive Styles */
 @media (max-width: 768px) {
   .footer {
-    width: 105%;
+    width: auto;
     left: 0;
     text-align: center;
   }
@@ -95,6 +95,8 @@
   .footer__title,
   .footer__links,
   .footer__contact {
+    text-align: center;
+    justify-content: center;
     margin-bottom: 20px;
   }
   .copyright{

@@ -1,6 +1,3 @@
-.page-container{
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px; /* Optional: some spacing on smaller screens */
-  box-sizing: border-box;
+.page-container {
+  width: 371px;
 }
