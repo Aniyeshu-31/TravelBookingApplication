@@ -16,7 +16,9 @@ const SearchBar = () => {
     if (location === "" || distance === "" || maxGroupSize === "") {
       return alert("All fields are required!");
     }
-    const res = await fetch(`${BASE_URL}/tours/search/getTourBySearch?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`);
+    const res = await fetch(`${BASE_URL}/tours/search/getTourBySearch?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`,{
+       credentials:'include'
+    });
     if(!res.ok) alert('Something went wrong');
      const  result = await res.json(); 
      navigate(`/tours/search?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`,{state:result.data});
