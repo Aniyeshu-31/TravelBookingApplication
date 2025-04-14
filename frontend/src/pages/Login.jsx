@@ -34,7 +34,7 @@ const Login = () => {
       },
       body: JSON.stringify(credentials),
     })
-      const result = await res.json();
+      const result = await res.json();  
       if(!res.ok)alert(result.message);
 
       console.log(result.data);
