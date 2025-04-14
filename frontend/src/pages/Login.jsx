@@ -25,7 +25,7 @@ const Login = () => {
     window.scroll(0, 0)
     const checkLogin = async () => {
       try {
-        const res = await fetch(`${BASE_URL}/auth/profile`, {
+        const res = await fetch(`${BASE_URL}/auth/me`, {
           method: 'GET',
           credentials: 'include',
         })
