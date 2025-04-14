@@ -34,6 +34,10 @@ const Login = () => {
           dispatch({ type: 'LOGIN_SUCCESS', payload: result.data })
           navigate('/')
         }
+        else{
+            dispatch({ type: 'LOGOUT' }) // Clear any user data from context
+            navigate('/login') // Redirect to login page
+          }
       } catch (err) {
         console.log('No existing login found')
       }
