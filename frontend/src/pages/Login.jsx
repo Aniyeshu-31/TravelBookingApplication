@@ -35,8 +35,7 @@ const Login = () => {
       body: JSON.stringify(credentials),
     })
       const result = await res.json();
-      const text = await result.text();
-      console.log(text);
+      console.log(result);
       if(!res.ok)alert(result.message);
       console.log(result.data);
       dispatch({type:'LOGIN_SUCCESS',payload:result.data})
