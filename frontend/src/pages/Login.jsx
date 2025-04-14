@@ -26,24 +26,21 @@ const Login = () => {
     e.preventDefault();
     dispatch({type:'LOGIN_START'});
     try {
-      const res = await fetch(`${BASE_URL}/auth/login`, {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(credentials),
-      })
-      console.log('Fetch response:', res) // logs Response object
-      const result = await res.json()
-      const text = await res.text() // Get raw text
+    const res = await fetch(`${BASE_URL}/auth/login`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(credentials),
+    })
+      const result = await res.json();
+      const text = await result.text();
       console.log(text);
-      if (!res.ok) alert(result.message)
-
-      console.log(result.data)
-
-      dispatch({ type: 'LOGIN_SUCCESS', payload: result.data })
-      navigate('/')
+      if(!res.ok)alert(result.message);
+      console.log(result.data);
+      dispatch({type:'LOGIN_SUCCESS',payload:result.data})
+      navigate("/");
     } catch (err) {
       dispatch({type:'LOGIN_FAILURE',payload:err.message});
     }
