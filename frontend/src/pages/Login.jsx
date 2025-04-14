@@ -1,50 +1,72 @@
-import React, { useState,useContext ,useEffect} from "react";
-
-import { Container, Row, Col, Form, FormGroup, Button } from "reactstrap";
-import { Link,useNavigate } from "react-router-dom";
-import "../styles/login.css";
-import { AuthContext } from "../context/AuthContext";
-import { BASE_URL } from "../utils/config";
-import loginImg from "../assets/images/login.png";
-import userIcon from "../assets/images/user.png";
+import React, { useState, useContext, useEffect } from 'react'
+import { Container, Row, Col, Form, FormGroup, Button } from 'reactstrap'
+import { Link, useNavigate } from 'react-router-dom'
+import '../styles/login.css'
+import { AuthContext } from '../context/AuthContext'
+import { BASE_URL } from '../utils/config'
+import loginImg from '../assets/images/login.png'
+import userIcon from '../assets/images/user.png'
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
-    email: undefined,
-    password: undefined,
-  });
-  const navigate = useNavigate();
-  const {dispatch}= useContext(AuthContext);
+    email: '',
+    password: '',
+  })
+
+  const navigate = useNavigate()
+  const { dispatch } = useContext(AuthContext)
+
   const handleChange = (e) => {
-    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-  };
+    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }))
+  }
+
+  // Auto-login if token exists
   useEffect(() => {
     window.scroll(0, 0)
-  }, [])
-  
-  const handleClick = async (e) => {
-    e.preventDefault();
-    dispatch({type:'LOGIN_START'});
-    try {
-    const res = await fetch(`${BASE_URL}/auth/login`, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(credentials),
-    })
-      const result = await res.json();  
-      if(!res.ok)alert(result.message);
-
-      console.log(result.data);
-
-      dispatch({type:'LOGIN_SUCCESS',payload:result.data})
-      navigate("/");
-    } catch (err) {
-      dispatch({type:'LOGIN_FAILURE',payload:err.message});
+    const checkLogin = async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/auth/profile`, {
+          method: 'GET',
+          credentials: 'include',
+        })
+        const result = await res.json()
+        if (res.ok) {
+          dispatch({ type: 'LOGIN_SUCCESS', payload: result.data })
+          navigate('/')
+        }
+      } catch (err) {
+        console.log('No existing login found')
+      }
     }
-  };
+    checkLogin()
+  }, [dispatch, navigate])
+
+  const handleClick = async (e) => {
+    e.preventDefault()
+    dispatch({ type: 'LOGIN_START' })
+
+    try {
+      const res = await fetch(`${BASE_URL}/auth/login`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(credentials),
+      })
+
+      const result = await res.json()
+      if (!res.ok) {
+        alert(result.message)
+        return
+      }
+
+      dispatch({ type: 'LOGIN_SUCCESS', payload: result.data })
+      navigate('/')
+    } catch (err) {
+      dispatch({ type: 'LOGIN_FAILURE', payload: err.message })
+    }
+  }
 
   return (
     <section>
@@ -97,7 +119,7 @@ const Login = () => {
         </Row>
       </Container>
     </section>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
